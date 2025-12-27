@@ -1,0 +1,621 @@
+{
+  "id": "algo-verse",
+  "name": "AlgoVerse",
+  "code": "AlgoVerse",
+  "version": "1.0.0",
+  "description": "Algorithm visualization platform covering algorithm flow, data structure animations, and complexity modeling",
+  "engine_version": "1.0.0",
+  "domains": [
+    {
+      "id": "fundamentals",
+      "name": "Algorithm Fundamentals",
+      "description": "Basic concepts and terminology in algorithms",
+      "topics": [
+        {
+          "id": "algorithm-basics",
+          "name": "Algorithm Basics",
+          "description": "Understanding what algorithms are",
+          "concepts": [
+            {
+              "id": "what-is-algorithm",
+              "name": "What is an Algorithm",
+              "description": "Definition and properties of algorithms",
+              "visualization_preferences": ["flowchart", "step-diagram"],
+              "difficulty_score": 0.3
+            },
+            {
+              "id": "algorithm-properties",
+              "name": "Algorithm Properties",
+              "description": "Finiteness, definiteness, input, output, effectiveness",
+              "visualization_preferences": ["property-checklist", "flow-diagram"],
+              "difficulty_score": 0.35
+            }
+          ],
+          "difficulty_levels": ["foundational"]
+        },
+        {
+          "id": "pseudocode",
+          "name": "Pseudocode",
+          "description": "Reading and writing algorithm pseudocode",
+          "concepts": [
+            {
+              "id": "pseudocode-basics",
+              "name": "Pseudocode Basics",
+              "description": "Common pseudocode conventions",
+              "visualization_preferences": ["code-highlight", "statement-flow"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "control-structures",
+              "name": "Control Structures",
+              "description": "Sequences, selections, and loops",
+              "visualization_preferences": ["control-flow", "branch-animation"],
+              "difficulty_score": 0.45
+            }
+          ],
+          "difficulty_levels": ["foundational", "developing"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["6", "7", "8", "9"],
+        "education_level": ["middle-school", "high-school"]
+      }
+    },
+    {
+      "id": "data-structures",
+      "name": "Data Structures",
+      "description": "Organizing and storing data efficiently",
+      "topics": [
+        {
+          "id": "linear-structures",
+          "name": "Linear Data Structures",
+          "description": "Arrays, lists, and stacks",
+          "concepts": [
+            {
+              "id": "arrays",
+              "name": "Arrays",
+              "description": "Contiguous memory storage",
+              "visualization_preferences": ["array-layout", "index-animation"],
+              "difficulty_score": 0.35
+            },
+            {
+              "id": "linked-lists",
+              "name": "Linked Lists",
+              "description": "Nodes with pointers",
+              "visualization_preferences": ["node-diagram", "pointer-animation"],
+              "difficulty_score": 0.55
+            },
+            {
+              "id": "stacks",
+              "name": "Stacks",
+              "description": "LIFO data structure",
+              "visualization_preferences": ["stack-animation", "push-pop"],
+              "difficulty_score": 0.45
+            },
+            {
+              "id": "queues",
+              "name": "Queues",
+              "description": "FIFO data structure",
+              "visualization_preferences": ["queue-animation", "enqueue-dequeue"],
+              "difficulty_score": 0.45
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient"]
+        },
+        {
+          "id": "hierarchical-structures",
+          "name": "Hierarchical Data Structures",
+          "description": "Trees and heaps",
+          "concepts": [
+            {
+              "id": "binary-trees",
+              "name": "Binary Trees",
+              "description": "Tree structures with up to two children",
+              "visualization_preferences": ["tree-layout", "node-traversal"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "binary-search-trees",
+              "name": "Binary Search Trees",
+              "description": "Ordered tree structures",
+              "visualization_preferences": ["bst-animation", "search-path"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "heaps",
+              "name": "Heaps",
+              "description": "Complete binary trees with heap property",
+              "visualization_preferences": ["heap-layout", "heapify-animation"],
+              "difficulty_score": 0.75
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "graph-structures",
+          "name": "Graph Data Structures",
+          "description": "Nodes and edges",
+          "concepts": [
+            {
+              "id": "graphs-basics",
+              "name": "Graph Basics",
+              "description": "Vertices and edges, directed and undirected",
+              "visualization_preferences": ["graph-layout", "edge-types"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "adjacency-representations",
+              "name": "Adjacency Representations",
+              "description": "Adjacency matrices and lists",
+              "visualization_preferences": ["matrix-graph", "list-graph"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["9", "10", "11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "algorithms",
+      "name": "Algorithm Categories",
+      "description": "Common algorithm types and their implementations",
+      "topics": [
+        {
+          "id": "sorting",
+          "name": "Sorting Algorithms",
+          "description": "Ordering elements efficiently",
+          "concepts": [
+            {
+              "id": "bubble-sort",
+              "name": "Bubble Sort",
+              "description": "Simple comparison-based sorting",
+              "visualization_preferences": ["sort-animation", "swap-visualization"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "merge-sort",
+              "name": "Merge Sort",
+              "description": "Divide and conquer sorting",
+              "visualization_preferences": ["merge-animation", "divide-conquer"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "quick-sort",
+              "name": "Quick Sort",
+              "description": "Partition-based sorting",
+              "visualization_preferences": ["partition-animation", "pivot-selection"],
+              "difficulty_score": 0.75
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient", "advanced"]
+        },
+        {
+          "id": "searching",
+          "name": "Searching Algorithms",
+          "description": "Finding elements in data structures",
+          "concepts": [
+            {
+              "id": "linear-search",
+              "name": "Linear Search",
+              "description": "Sequential element checking",
+              "visualization_preferences": ["search-animation", "position-tracking"],
+              "difficulty_score": 0.35
+            },
+            {
+              "id": "binary-search",
+              "name": "Binary Search",
+              "description": "Divide and conquer searching",
+              "visualization_preferences": ["binary-search", "search-range"],
+              "difficulty_score": 0.55
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient"]
+        },
+        {
+          "id": "graph-algorithms",
+          "name": "Graph Algorithms",
+          "description": "Traversing and analyzing graphs",
+          "concepts": [
+            {
+              "id": "dfs",
+              "name": "Depth-First Search",
+              "description": "Graph traversal going deep",
+              "visualization_preferences": ["dfs-animation", "stack-trace"],
+              "difficulty_score": 0.65
+            },
+            {
+              "id": "bfs",
+              "name": "Breadth-First Search",
+              "description": "Graph traversal level by level",
+              "visualization_preferences": ["bfs-animation", "queue-trace"],
+              "difficulty_score": 0.65
+            },
+            {
+              "id": "dijkstra",
+              "name": "Dijkstra's Algorithm",
+              "description": "Shortest path in weighted graphs",
+              "visualization_preferences": ["path-animation", "distance-update"],
+              "difficulty_score": 0.85
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["10", "11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "complexity",
+      "name": "Algorithm Complexity",
+      "description": "Analyzing time and space efficiency",
+      "topics": [
+        {
+          "id": "time-complexity",
+          "name": "Time Complexity",
+          "description": "Analyzing running time",
+          "concepts": [
+            {
+              "id": "big-o",
+              "name": "Big-O Notation",
+              "description": "Describing upper bounds",
+              "visualization_preferences": ["growth-curve", "complexity-compare"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "common-complexities",
+              "name": "Common Complexity Classes",
+              "description": "O(1), O(log n), O(n), O(n²), O(2ⁿ)",
+              "visualization_preferences": ["complexity-chart", "growth-comparison"],
+              "difficulty_score": 0.65
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "space-complexity",
+          "name": "Space Complexity",
+          "description": "Analyzing memory usage",
+          "concepts": [
+            {
+              "id": "space-basics",
+              "name": "Space Analysis",
+              "description": "Analyzing memory usage of algorithms",
+              "visualization_preferences": ["memory-layout", "space-comparison"],
+              "difficulty_score": 0.6
+            }
+          ],
+          "difficulty_levels": ["proficient"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "recursion",
+      "name": "Recursion",
+      "description": "Self-referential algorithms",
+      "topics": [
+        {
+          "id": "recursion-basics",
+          "name": "Recursion Basics",
+          "description": "Base case and recursive case",
+          "concepts": [
+            {
+              "id": "recursive-thinking",
+              "name": "Recursive Thinking",
+              "description": "Breaking problems into smaller subproblems",
+              "visualization_preferences": ["call-stack", "recursion-tree"],
+              "difficulty_score": 0.55
+            },
+            {
+              "id": "base-case",
+              "name": "Base Case",
+              "description": "Stopping condition for recursion",
+              "visualization_preferences": ["base-highlight", "termination-flow"],
+              "difficulty_score": 0.5
+            }
+          ],
+          "difficulty_levels": ["proficient"]
+        },
+        {
+          "id": "recursive-algorithms",
+          "name": "Recursive Algorithms",
+          "description": "Common recursive algorithm patterns",
+          "concepts": [
+            {
+              "id": "factorial",
+              "name": "Factorial",
+              "description": "Classic recursive example",
+              "visualization_preferences": ["call-animation", "stack-unwinding"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "fibonacci",
+              "name": "Fibonacci Sequence",
+              "description": "Recursion with overlapping subproblems",
+              "visualization_preferences": ["fibonacci-tree", "overlap-show"],
+              "difficulty_score": 0.65
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["10", "11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    }
+  ],
+  "visualization_types": {
+    "flowchart": {
+      "id": "flowchart",
+      "name": "Flowchart Diagram",
+      "description": "Flowchart representation of algorithms",
+      "category": "flowchart",
+      "renderer": "flowchart-renderer",
+      "output_format": "svg",
+      "capabilities": ["interactive", "responsive"]
+    },
+    "array-layout": {
+      "id": "array-layout",
+      "name": "Array Visualization",
+      "description": "Visual representation of array structures",
+      "category": "diagram",
+      "renderer": "array-visualizer",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated"]
+    },
+    "node-diagram": {
+      "id": "node-diagram",
+      "name": "Node Diagram",
+      "description": "Visualization of node-based data structures",
+      "category": "diagram",
+      "renderer": "node-visualizer",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated"]
+    },
+    "tree-layout": {
+      "id": "tree-layout",
+      "name": "Tree Layout",
+      "description": "Hierarchical tree visualization",
+      "category": "graph",
+      "renderer": "tree-visualizer",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated", "expandable"]
+    },
+    "sort-animation": {
+      "id": "sort-animation",
+      "name": "Sorting Animation",
+      "description": "Animated visualization of sorting algorithms",
+      "category": "animation",
+      "renderer": "sort-visualizer",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive", "speed-control"]
+    },
+    "search-animation": {
+      "id": "search-animation",
+      "name": "Search Animation",
+      "description": "Animated visualization of search algorithms",
+      "category": "animation",
+      "renderer": "search-visualizer",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive"]
+    },
+    "graph-layout": {
+      "id": "graph-layout",
+      "name": "Graph Visualization",
+      "description": "Node and edge graph visualization",
+      "category": "graph",
+      "renderer": "graph-visualizer",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated", "draggable"]
+    },
+    "call-stack": {
+      "id": "call-stack",
+      "name": "Call Stack Visualization",
+      "description": "Visualization of recursive call stack",
+      "category": "animation",
+      "renderer": "stack-visualizer",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive"]
+    },
+    "complexity-chart": {
+      "id": "complexity-chart",
+      "name": "Complexity Chart",
+      "description": "Chart comparing algorithm complexities",
+      "category": "chart",
+      "renderer": "complexity-chart",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "responsive"]
+    },
+    "code-highlight": {
+      "id": "code-highlight",
+      "name": "Code Highlighter",
+      "description": "Syntax highlighting for code visualization",
+      "category": "diagram",
+      "renderer": "code-renderer",
+      "output_format": "svg",
+      "capabilities": ["accessible"]
+    },
+    "step-diagram": {
+      "id": "step-diagram",
+      "name": "Step Diagram",
+      "description": "Step-by-step algorithm breakdown",
+      "category": "diagram",
+      "renderer": "step-visualizer",
+      "output_format": "svg",
+      "capabilities": ["interactive"]
+    },
+    "dfs-animation": {
+      "id": "dfs-animation",
+      "name": "DFS Animation",
+      "description": "Animated depth-first search traversal",
+      "category": "animation",
+      "renderer": "graph-traversal",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive"]
+    },
+    "bfs-animation": {
+      "id": "bfs-animation",
+      "name": "BFS Animation",
+      "description": "Animated breadth-first search traversal",
+      "category": "animation",
+      "renderer": "graph-traversal",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive"]
+    }
+  },
+  "service_extensions": {
+    "concept_service": {
+      "class_path": "visualverse.engine.content_verticals.algo_verse.AlgoVerseConceptService",
+      "module": "algo_verse.services",
+      "priority": 85,
+      "config": {
+        "code_parsing": true,
+        "algorithm_classification": true
+      }
+    },
+    "visual_service": {
+      "class_path": "visualverse.engine.content_verticals.algo_verse.AlgoVerseVisualService",
+      "module": "algo_verse.services",
+      "priority": 85,
+      "config": {
+        "code_renderer": "syntax-highlight",
+        "flowchart_renderer": "auto-layout"
+      }
+    },
+    "animation_service": {
+      "class_path": "visualverse.engine.content_verticals.algo_verse.AlgoVerseAnimationService",
+      "module": "algo_verse.services",
+      "priority": 85,
+      "config": {
+        "step_animation": true,
+        "speed_control": true
+      }
+    }
+  },
+  "visualization_templates": {
+    "default_style": "code-clean",
+    "color_schemes": [
+      {
+        "id": "code-light",
+        "name": "Code Light",
+        "description": "Light theme for code visualization",
+        "colors": {
+          "primary": "#2563eb",
+          "secondary": "#7c3aed",
+          "accent": "#059669",
+          "background": "#ffffff",
+          "text": "#374151",
+          "success": "#10b981",
+          "warning": "#f59e0b",
+          "error": "#ef4444"
+        },
+        "theme": "light"
+      },
+      {
+        "id": "code-dark",
+        "name": "Code Dark",
+        "description": "Dark theme for code visualization",
+        "colors": {
+          "primary": "#60a5fa",
+          "secondary": "#a78bfa",
+          "accent": "#34d399",
+          "background": "#1e1e1e",
+          "text": "#e5e7eb",
+          "success": "#10b981",
+          "warning": "#fbbf24",
+          "error": "#f87171"
+        },
+        "theme": "dark"
+      }
+    ],
+    "animation_presets": {
+      "step-by-step": {
+        "id": "step-by-step",
+        "name": "Step by Step",
+        "description": "Slow step-by-step animation",
+        "duration_ms": 5000,
+        "easing": "steps(20)"
+      },
+      "fast-forward": {
+        "id": "fast-forward",
+        "name": "Fast Forward",
+        "description": "Fast animation for large datasets",
+        "duration_ms": 2000,
+        "easing": "linear"
+      },
+      "pausable": {
+        "id": "pausable",
+        "name": "Pausable Animation",
+        "description": "Animation with pause/play control",
+        "duration_ms": 8000,
+        "easing": "ease-in-out"
+      }
+    },
+    "layout_patterns": [
+      {
+        "id": "code-split",
+        "name": "Code Split View",
+        "description": "Split view with code and visualization",
+        "template": "algo-split",
+        "aspect_ratio": "16:9"
+      },
+      {
+        "id": "full-viz",
+        "name": "Full Visualization",
+        "description": "Full-screen visualization area",
+        "template": "algo-full",
+        "aspect_ratio": "16:9"
+      },
+      {
+        "id": "step-view",
+        "name": "Step View",
+        "description": "Layout showing current step prominently",
+        "template": "algo-step",
+        "aspect_ratio": "4:3"
+      }
+    ]
+  },
+  "curriculum_templates": [
+    {
+      "id": "standard-algorithms",
+      "name": "Standard Algorithm Curriculum",
+      "description": "Traditional algorithms curriculum",
+      "structure": [
+        {"id": "concept", "name": "Concept Introduction", "type": "lesson", "duration_hours": 1},
+        {"id": "pseudocode", "name": "Pseudocode Explanation", "type": "lesson", "duration_hours": 1},
+        {"id": "visual", "name": "Visual Demonstration", "type": "lesson", "duration_hours": 1},
+        {"id": "practice", "name": "Practice Problems", "type": "lesson", "duration_hours": 3}
+      ],
+      "assessment_strategy": "problem-based"
+    },
+    {
+      "id": "visual-heavy",
+      "name": "Visual-Heavy Algorithm Curriculum",
+      "description": "Curriculum emphasizing algorithm visualization",
+      "structure": [
+        {"id": "demo", "name": "Watch Visualization", "type": "lesson", "duration_hours": 1},
+        {"id": "trace", "name": "Trace Through Example", "type": "lesson", "duration_hours": 1},
+        {"id": "dry-run", "name": "Dry Run on Paper", "type": "lesson", "duration_hours": 1},
+        {"id": "implement", "name": "Implement", "type": "lesson", "duration_hours": 2}
+      ],
+      "assessment_strategy": "visual-trace"
+    }
+  ],
+  "metadata": {
+    "author": "VisualVerse Platform",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-12-26T00:00:00Z",
+    "tags": ["algorithms", "data-structures", "sorting", "searching", "complexity", "visualization"],
+    "license": "proprietary"
+  }
+}

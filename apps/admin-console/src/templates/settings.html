@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - VisualVerse Admin Console</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body class="admin-layout">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>VisualVerse</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="{{ url_for('dashboard') }}" class="nav-item">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"/>
+                </svg>
+                Dashboard
+            </a>
+            <a href="{{ url_for('users') }}" class="nav-item">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                </svg>
+                Users
+            </a>
+            <a href="{{ url_for('content') }}" class="nav-item">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                </svg>
+                Content
+            </a>
+            <a href="{{ url_for('moderation') }}" class="nav-item">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 11l3 3L22 4"/>
+                </svg>
+                Moderation
+            </a>
+            <a href="{{ url_for('analytics') }}" class="nav-item">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"/>
+                </svg>
+                Analytics
+            </a>
+            <a href="{{ url_for('settings') }}" class="nav-item active">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+                Settings
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="{{ url_for('logout') }}" class="nav-item">Logout</a>
+        </div>
+    </aside>
+    
+    <main class="main-content">
+        <header class="main-header">
+            <div class="header-title">
+                <h1>Platform Settings</h1>
+                <p>Configure platform behavior and options</p>
+            </div>
+        </header>
+        
+        <div class="settings-content">
+            <div class="settings-section">
+                <h2>General Settings</h2>
+                <div class="setting-item">
+                    <label>Platform Name</label>
+                    <input type="text" value="VisualVerse" class="setting-input">
+                </div>
+                <div class="setting-item">
+                    <label>Default Language</label>
+                    <select class="setting-select">
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="es">Spanish</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h2>Content Settings</h2>
+                <div class="setting-item toggle">
+                    <label>Require Moderation</label>
+                    <input type="checkbox" checked class="toggle-input">
+                </div>
+                <div class="setting-item toggle">
+                    <label>Allow Public Content</label>
+                    <input type="checkbox" checked class="toggle-input">
+                </div>
+            </div>
+            
+            <button class="btn btn-primary">Save Settings</button>
+        </div>
+    </main>
+    
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

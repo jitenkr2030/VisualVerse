@@ -1,0 +1,488 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - VisualVerse{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-header mb-4">
+                <h1><i class="fas fa-tachometer-alt me-2"></i>Creator Dashboard</h1>
+                <p class="text-muted">Overview of your VisualVerse activity and system status</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stat-card bg-primary text-white">
+                <div class="stat-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="totalLessonsCount">0</h3>
+                    <p>Total Lessons</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stat-card bg-success text-white">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="completedLessonsCount">0</h3>
+                    <p>Completed</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stat-card bg-info text-white">
+                <div class="stat-icon">
+                    <i class="fas fa-cog fa-spin"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="processingLessonsCount">0</h3>
+                    <p>Processing</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stat-card bg-warning text-white">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="draftLessonsCount">0</h3>
+                    <p>Drafts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Subject Distribution -->
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chart-pie me-2"></i>Lessons by Subject
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div id="subjectChart">
+                        <div class="text-center py-4">
+                            <i class="fas fa-spinner fa-spin fa-2x text-muted mb-3"></i>
+                            <p class="text-muted">Loading chart data...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-history me-2"></i>Recent Activity
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div id="recentActivity">
+                        <div class="text-center py-4">
+                            <i class="fas fa-spinner fa-spin fa-2x text-muted mb-3"></i>
+                            <p class="text-muted">Loading activity...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- System Status -->
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-server me-2"></i>System Status
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="system-status">
+                        <div class="status-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>VisualVerse Engine</span>
+                                <span class="badge bg-success" id="engineStatus">Online</span>
+                            </div>
+                            <div class="progress mt-1">
+                                <div class="progress-bar bg-success" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="status-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>Rendering Service</span>
+                                <span class="badge bg-success" id="renderStatus">Ready</span>
+                            </div>
+                            <div class="progress mt-1">
+                                <div class="progress-bar bg-success" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="status-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>Content Database</span>
+                                <span class="badge bg-success" id="dbStatus">Connected</span>
+                            </div>
+                            <div class="progress mt-1">
+                                <div class="progress-bar bg-success" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>Quick Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="/lesson-creator" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Create New Lesson
+                        </a>
+                        <a href="/lesson-manager" class="btn btn-outline-primary">
+                            <i class="fas fa-book me-2"></i>Manage Lessons
+                        </a>
+                        <button class="btn btn-outline-info" onclick="exportData()">
+                            <i class="fas fa-download me-2"></i>Export Data
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="refreshDashboard()">
+                            <i class="fas fa-sync me-2"></i>Refresh Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Metrics -->
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chart-line me-2"></i>Performance
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="performance-metrics">
+                        <div class="metric-item mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Average Creation Time</span>
+                                <strong id="avgCreationTime">--</strong>
+                            </div>
+                        </div>
+                        <div class="metric-item mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Success Rate</span>
+                                <strong id="successRate">--</strong>
+                            </div>
+                        </div>
+                        <div class="metric-item mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Storage Used</span>
+                                <strong id="storageUsed">--</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Lessons -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-list me-2"></i>Recent Lessons
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div id="recentLessonsTable">
+                        <div class="text-center py-4">
+                            <i class="fas fa-spinner fa-spin fa-2x text-muted mb-3"></i>
+                            <p class="text-muted">Loading lessons...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    loadDashboardData();
+    setupAutoRefresh();
+});
+
+function loadDashboardData() {
+    Promise.all([
+        loadLessonsData(),
+        loadSystemStatus(),
+        loadPerformanceMetrics()
+    ]).then(() => {
+        updateCharts();
+    });
+}
+
+function loadLessonsData() {
+    return fetch('/api/lessons')
+        .then(response => response.json())
+        .then(data => {
+            updateStatsCards(data.lessons);
+            updateRecentActivity(data.lessons);
+            updateRecentLessonsTable(data.lessons);
+            updateSubjectChart(data.lessons);
+        })
+        .catch(error => {
+            console.error('Error loading lessons data:', error);
+            showNotification('Error loading dashboard data', 'error');
+        });
+}
+
+function updateStatsCards(lessons) {
+    const totalLessons = lessons.length;
+    const completedLessons = lessons.filter(l => l.status === 'completed').length;
+    const processingLessons = lessons.filter(l => l.status === 'processing').length;
+    const draftLessons = lessons.filter(l => l.status === 'draft').length;
+    
+    document.getElementById('totalLessonsCount').textContent = totalLessons;
+    document.getElementById('completedLessonsCount').textContent = completedLessons;
+    document.getElementById('processingLessonsCount').textContent = processingLessons;
+    document.getElementById('draftLessonsCount').textContent = draftLessons;
+}
+
+function updateRecentActivity(lessons) {
+    const recentLessons = lessons
+        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        .slice(0, 5);
+    
+    const container = document.getElementById('recentActivity');
+    
+    if (recentLessons.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-3">
+                <i class="fas fa-info-circle fa-2x text-muted mb-3"></i>
+                <p class="text-muted">No recent activity</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = recentLessons.map(lesson => `
+        <div class="activity-item d-flex align-items-center py-2 border-bottom">
+            <div class="activity-icon me-3">
+                <i class="fas fa-book text-primary"></i>
+            </div>
+            <div class="activity-content flex-grow-1">
+                <h6 class="mb-1">${lesson.title}</h6>
+                <small class="text-muted">${lesson.subject} • ${formatDate(lesson.created_at)}</small>
+            </div>
+            <div class="activity-status">
+                <span class="badge bg-${getStatusColor(lesson.status)}">${lesson.status}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+function updateRecentLessonsTable(lessons) {
+    const recentLessons = lessons
+        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        .slice(0, 10);
+    
+    const container = document.getElementById('recentLessonsTable');
+    
+    if (recentLessons.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-4">
+                <i class="fas fa-book-open fa-3x text-muted mb-3"></i>
+                <h5 class="text-muted">No lessons created yet</h5>
+                <p class="text-muted">Create your first lesson to get started!</p>
+                <a href="/lesson-creator" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Create New Lesson
+                </a>
+            </div>
+        `;
+        return;
+    }
+    
+    const tableHtml = `
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${recentLessons.map(lesson => `
+                        <tr>
+                            <td>${lesson.title}</td>
+                            <td>
+                                <span class="badge bg-light text-dark">${lesson.subject}</span>
+                            </td>
+                            <td>
+                                <span class="badge bg-${getStatusColor(lesson.status)}">${lesson.status}</span>
+                            </td>
+                            <td>${formatDate(lesson.created_at)}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-primary" onclick="viewLesson('${lesson.id}')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-secondary" onclick="editLesson('${lesson.id}')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+    
+    container.innerHTML = tableHtml;
+}
+
+function updateSubjectChart(lessons) {
+    const subjectCounts = {};
+    lessons.forEach(lesson => {
+        subjectCounts[lesson.subject] = (subjectCounts[lesson.subject] || 0) + 1;
+    });
+    
+    const container = document.getElementById('subjectChart');
+    
+    if (Object.keys(subjectCounts).length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-4">
+                <i class="fas fa-chart-pie fa-2x text-muted mb-3"></i>
+                <p class="text-muted">No data to display</p>
+            </div>
+        `;
+        return;
+    }
+    
+    const total = lessons.length;
+    const colors = ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6f42c1', '#20c997'];
+    let colorIndex = 0;
+    
+    const chartHtml = `
+        <div class="row">
+            ${Object.entries(subjectCounts).map(([subject, count]) => {
+                const percentage = Math.round((count / total) * 100);
+                const color = colors[colorIndex % colors.length];
+                colorIndex++;
+                return `
+                    <div class="col-6 mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="small">${subject}</span>
+                            <span class="small fw-bold">${count} (${percentage}%)</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar" style="width: ${percentage}%; background-color: ${color};"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
+    
+    container.innerHTML = chartHtml;
+}
+
+function loadSystemStatus() {
+    // Mock system status - in real implementation, this would check actual system health
+    document.getElementById('engineStatus').textContent = 'Online';
+    document.getElementById('renderStatus').textContent = 'Ready';
+    document.getElementById('dbStatus').textContent = 'Connected';
+}
+
+function loadPerformanceMetrics() {
+    // Mock performance metrics - in real implementation, this would calculate from actual data
+    document.getElementById('avgCreationTime').textContent = '2.3 min';
+    document.getElementById('successRate').textContent = '98.5%';
+    document.getElementById('storageUsed').textContent = '1.2 GB';
+}
+
+function refreshDashboard() {
+    showNotification('Refreshing dashboard...', 'info');
+    loadDashboardData();
+}
+
+function exportData() {
+    // Implementation for data export
+    showNotification('Export feature coming soon', 'info');
+}
+
+function viewLesson(lessonId) {
+    // Implementation for viewing lesson
+    window.location.href = `/lesson-manager?view=${lessonId}`;
+}
+
+function editLesson(lessonId) {
+    // Implementation for editing lesson
+    window.location.href = `/lesson-creator?edit=${lessonId}`;
+}
+
+function setupAutoRefresh() {
+    // Refresh dashboard every 60 seconds
+    setInterval(loadDashboardData, 60000);
+}
+
+function formatDate(dateString) {
+    return new Date(dateString).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
+function getStatusColor(status) {
+    switch(status) {
+        case 'completed': return 'success';
+        case 'processing': return 'info';
+        case 'error': return 'danger';
+        case 'draft': return 'secondary';
+        default: return 'secondary';
+    }
+}
+
+function showNotification(message, type = 'info') {
+    const toast = document.getElementById('notificationToast');
+    const toastMessage = document.getElementById('toastMessage');
+    
+    toastMessage.textContent = message;
+    toast.className = `toast bg-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} text-white`;
+    
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+}
+</script>
+{% endblock %}

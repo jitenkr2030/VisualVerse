@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block title %}VisualVerse Creator Portal - Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="hero-section py-5">
+                <h1 class="display-4 fw-bold text-primary mb-4">
+                    <i class="fas fa-play-circle me-3"></i>Welcome to VisualVerse
+                </h1>
+                <p class="lead mb-4">
+                    Create stunning educational animations across multiple subjects with our 
+                    subject-agnostic visual learning engine.
+                </p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="/lesson-creator" class="btn btn-primary btn-lg">
+                        <i class="fas fa-plus-circle me-2"></i>Create New Lesson
+                    </a>
+                    <a href="/dashboard" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-tachometer-alt me-2"></i>View Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="text-center mb-5">Why Choose VisualVerse?</h2>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="feature-card text-center p-4 h-100">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-cogs fa-3x text-primary"></i>
+                </div>
+                <h4>Subject Agnostic</h4>
+                <p>Create animations for Mathematics, Physics, Chemistry, Computer Science, and Finance using the same engine.</p>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="feature-card text-center p-4 h-100">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-brain fa-3x text-success"></i>
+                </div>
+                <h4>Smart Recommendations</h4>
+                <p>AI-powered learning path generation based on student progress and curriculum dependencies.</p>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="feature-card text-center p-4 h-100">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-video fa-3x text-info"></i>
+                </div>
+                <h4>High-Quality Rendering</h4>
+                <p>Professional animations rendered with Manim Community engine for educational excellence.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="stats-section text-center">
+                <h2 class="mb-4">Quick Overview</h2>
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalLessons">0</div>
+                            <div class="stat-label">Lessons Created</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number" id="availableSubjects">0</div>
+                            <div class="stat-label">Subjects Available</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Platforms</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Subject Agnostic</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-history me-2"></i>Recent Activity
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div id="recentActivity">
+                        <div class="text-center py-4">
+                            <i class="fas fa-spinner fa-spin fa-2x text-muted mb-3"></i>
+                            <p class="text-muted">Loading recent activity...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Getting Started -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="getting-started text-center">
+                <h2 class="mb-4">Getting Started</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="step-card p-3">
+                            <div class="step-number">1</div>
+                            <h5>Choose Subject</h5>
+                            <p>Select from Mathematics, Physics, Chemistry, Computer Science, or Finance</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="step-card p-3">
+                            <div class="step-number">2</div>
+                            <h5>Write Content</h5>
+                            <p>Enter your lesson content or learning objectives</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="step-card p-3">
+                            <div class="step-number">3</div>
+                            <h5>Generate Animation</h5>
+                            <p>Let VisualVerse create engaging visual lessons</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Load dashboard data
+    loadDashboardData();
+    
+    // Initialize Socket.IO connection
+    initializeSocket();
+    
+    // Auto-refresh stats
+    setInterval(loadDashboardData, 30000); // Refresh every 30 seconds
+});
+
+function loadDashboardData() {
+    // Load total lessons
+    fetch('/api/lessons')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('totalLessons').textContent = data.lessons.length;
+        })
+        .catch(error => console.error('Error loading lessons:', error));
+    
+    // Load available subjects
+    fetch('/api/subjects')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('availableSubjects').textContent = data.subjects.length;
+        })
+        .catch(error => console.error('Error loading subjects:', error));
+    
+    // Load recent activity
+    loadRecentActivity();
+}
+
+function loadRecentActivity() {
+    fetch('/api/lessons')
+        .then(response => response.json())
+        .then(data => {
+            const activityContainer = document.getElementById('recentActivity');
+            
+            if (data.lessons.length === 0) {
+                activityContainer.innerHTML = `
+                    <div class="text-center py-4">
+                        <i class="fas fa-info-circle fa-2x text-muted mb-3"></i>
+                        <p class="text-muted">No lessons created yet. <a href="/lesson-creator">Create your first lesson!</a></p>
+                    </div>
+                `;
+            } else {
+                const recentLessons = data.lessons.slice(-5).reverse();
+                activityContainer.innerHTML = recentLessons.map(lesson => `
+                    <div class="activity-item d-flex align-items-center py-2 border-bottom">
+                        <div class="activity-icon me-3">
+                            <i class="fas fa-book text-primary"></i>
+                        </div>
+                        <div class="activity-content flex-grow-1">
+                            <h6 class="mb-1">${lesson.title}</h6>
+                            <small class="text-muted">${lesson.subject} • ${new Date(lesson.created_at).toLocaleDateString()}</small>
+                        </div>
+                        <div class="activity-status">
+                            <span class="badge bg-${getStatusColor(lesson.status)}">${lesson.status}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        })
+        .catch(error => {
+            console.error('Error loading recent activity:', error);
+            document.getElementById('recentActivity').innerHTML = `
+                <div class="text-center py-4">
+                    <i class="fas fa-exclamation-triangle fa-2x text-warning mb-3"></i>
+                    <p class="text-muted">Error loading recent activity</p>
+                </div>
+            `;
+        });
+}
+
+function getStatusColor(status) {
+    switch(status) {
+        case 'completed': return 'success';
+        case 'processing': return 'info';
+        case 'error': return 'danger';
+        default: return 'secondary';
+    }
+}
+
+function initializeSocket() {
+    const socket = io();
+    
+    socket.on('connect', function() {
+        console.log('Connected to VisualVerse Creator Portal');
+    });
+    
+    socket.on('disconnect', function() {
+        console.log('Disconnected from server');
+    });
+}
+</script>
+{% endblock %}

@@ -1,0 +1,473 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Dashboard - VisualVerse Admin{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Stats Cards -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total Users
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalUsers">0</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Total Lessons
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalLessons">0</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-play-circle fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Total Views
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalViews">0</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-eye fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Avg Session (min)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="avgSession">0</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clock fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Charts -->
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Platform Overview</h6>
+            </div>
+            <div class="card-body">
+                <div class="chart-area">
+                    <canvas id="overviewChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Recent Activity</h6>
+            </div>
+            <div class="card-body">
+                <div class="activity-feed" id="recentActivity">
+                    <div class="text-center py-4">
+                        <i class="fas fa-spinner fa-spin fa-2x text-muted mb-3"></i>
+                        <p class="text-muted">Loading activity...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- User Engagement Chart -->
+    <div class="col-xl-6 col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">User Engagement</h6>
+            </div>
+            <div class="card-body">
+                <div class="chart-pie">
+                    <canvas id="engagementChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Status -->
+    <div class="col-xl-6 col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">System Status</h6>
+            </div>
+            <div class="card-body">
+                <div class="system-status" id="systemStatus">
+                    <div class="text-center py-4">
+                        <i class="fas fa-spinner fa-spin fa-2x text-muted mb-3"></i>
+                        <p class="text-muted">Loading system status...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Top Performing Lessons -->
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Top Performing Lessons</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="lessonsTable">
+                        <thead>
+                            <tr>
+                                <th>Lesson</th>
+                                <th>Subject</th>
+                                <th>Creator</th>
+                                <th>Views</th>
+                                <th>Rating</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lessonsTableBody">
+                            <tr>
+                                <td colspan="7" class="text-center py-4">
+                                    <i class="fas fa-spinner fa-spin"></i> Loading lessons...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    loadDashboardData();
+    initializeCharts();
+    startAutoRefresh();
+});
+
+let overviewChart = null;
+let engagementChart = null;
+
+function loadDashboardData() {
+    fetch('/api/dashboard/stats')
+        .then(response => response.json())
+        .then(data => {
+            updateStatsCards(data.today);
+            updateCharts(data.charts);
+            updateRecentActivity(data.recent_activity);
+            loadSystemStatus();
+        })
+        .catch(error => {
+            console.error('Error loading dashboard data:', error);
+            showNotification('Error loading dashboard data', 'error');
+        });
+}
+
+function updateStatsCards(stats) {
+    document.getElementById('totalUsers').textContent = stats.total_users.toLocaleString();
+    document.getElementById('totalLessons').textContent = stats.total_lessons.toLocaleString();
+    document.getElementById('totalViews').textContent = stats.total_views.toLocaleString();
+    document.getElementById('avgSession').textContent = stats.avg_session_duration;
+}
+
+function initializeCharts() {
+    // Overview Chart
+    const overviewCtx = document.getElementById('overviewChart').getContext('2d');
+    overviewChart = new Chart(overviewCtx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Users',
+                data: [],
+                borderColor: '#4e73df',
+                backgroundColor: 'rgba(78, 115, 223, 0.05)',
+                borderWidth: 2,
+                pointRadius: 3,
+                pointBackgroundColor: '#4e73df',
+                pointBorderColor: '#4e73df',
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: '#4e73df',
+                pointHoverBorderColor: '#4e73df',
+                pointHitRadius: 10,
+                pointBorderWidth: 2,
+                tension: 0.3
+            }, {
+                label: 'Lessons',
+                data: [],
+                borderColor: '#1cc88a',
+                backgroundColor: 'rgba(28, 200, 138, 0.05)',
+                borderWidth: 2,
+                pointRadius: 3,
+                pointBackgroundColor: '#1cc88a',
+                pointBorderColor: '#1cc88a',
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: '#1cc88a',
+                pointHoverBorderColor: '#1cc88a',
+                pointHitRadius: 10,
+                pointBorderWidth: 2,
+                tension: 0.3
+            }, {
+                label: 'Views',
+                data: [],
+                borderColor: '#36b9cc',
+                backgroundColor: 'rgba(54, 185, 204, 0.05)',
+                borderWidth: 2,
+                pointRadius: 3,
+                pointBackgroundColor: '#36b9cc',
+                pointBorderColor: '#36b9cc',
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: '#36b9cc',
+                pointHoverBorderColor: '#36b9cc',
+                pointHitRadius: 10,
+                pointBorderWidth: 2,
+                tension: 0.3
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    borderColor: '#4e73df',
+                    borderWidth: 1
+                }
+            },
+            scales: {
+                x: {
+                    display: true,
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    display: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    }
+                }
+            },
+            interaction: {
+                mode: 'nearest',
+                axis: 'x',
+                intersect: false
+            }
+        }
+    });
+
+    // Engagement Chart
+    const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+    engagementChart = new Chart(engagementCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Mathematics', 'Physics', 'Computer Science', 'Chemistry', 'Biology'],
+            datasets: [{
+                data: [78.5, 72.3, 85.2, 68.9, 74.1],
+                backgroundColor: [
+                    '#4e73df',
+                    '#1cc88a',
+                    '#36b9cc',
+                    '#f6c23e',
+                    '#e74a3b'
+                ],
+                hoverBackgroundColor: [
+                    '#365cc0',
+                    '#17a673',
+                    '#2da5b3',
+                    '#dda520',
+                    '#c0392b'
+                ],
+                hoverBorderColor: 'rgba(234, 236, 244, 1)'
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.label + ': ' + context.parsed + '% completion rate';
+                        }
+                    }
+                }
+            },
+            cutout: '70%'
+        }
+    });
+}
+
+function updateCharts(chartData) {
+    if (overviewChart) {
+        overviewChart.data.labels = chartData.dates;
+        overviewChart.data.datasets[0].data = chartData.users;
+        overviewChart.data.datasets[1].data = chartData.lessons;
+        overviewChart.data.datasets[2].data = chartData.views;
+        overviewChart.update();
+    }
+}
+
+function updateRecentActivity(activities) {
+    const container = document.getElementById('recentActivity');
+    
+    if (activities.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-4">
+                <i class="fas fa-info-circle fa-2x text-muted mb-3"></i>
+                <p class="text-muted">No recent activity</p>
+            </div>
+        `;
+        return;
+    }
+    
+    const activityHtml = activities.map(activity => {
+        const iconClass = getActivityIcon(activity.type);
+        const timeAgo = getTimeAgo(activity.timestamp);
+        
+        return `
+            <div class="activity-item d-flex align-items-start mb-3">
+                <div class="activity-icon me-3">
+                    <i class="${iconClass}"></i>
+                </div>
+                <div class="activity-content flex-grow-1">
+                    <h6 class="mb-1">${activity.action}</h6>
+                    <p class="mb-1 small text-muted">${activity.details}</p>
+                    <small class="text-muted">${timeAgo}</small>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    container.innerHTML = activityHtml;
+}
+
+function getActivityIcon(type) {
+    switch(type) {
+        case 'user': return 'fas fa-user-plus text-success';
+        case 'content': return 'fas fa-play-circle text-primary';
+        case 'system': return 'fas fa-cog text-warning';
+        default: return 'fas fa-info-circle text-info';
+    }
+}
+
+function getTimeAgo(timestamp) {
+    const now = new Date();
+    const time = new Date(timestamp);
+    const diffInMinutes = Math.floor((now - time) / (1000 * 60));
+    
+    if (diffInMinutes < 1) return 'Just now';
+    if (diffInMinutes < 60) return `${diffInMinutes} min ago`;
+    
+    const diffInHours = Math.floor(diffInMinutes / 60);
+    if (diffInHours < 24) return `${diffInHours} hr ago`;
+    
+    const diffInDays = Math.floor(diffInHours / 24);
+    return `${diffInDays} days ago`;
+}
+
+function loadSystemStatus() {
+    fetch('/api/system/health')
+        .then(response => response.json())
+        .then(data => {
+            updateSystemStatus(data);
+        })
+        .catch(error => {
+            console.error('Error loading system status:', error);
+        });
+}
+
+function updateSystemStatus(healthData) {
+    const container = document.getElementById('systemStatus');
+    
+    const statusHtml = Object.entries(healthData.services).map(([service, info]) => {
+        const statusColor = info.status === 'healthy' ? 'success' : 'warning';
+        const statusIcon = info.status === 'healthy' ? 'check-circle' : 'exclamation-triangle';
+        
+        return `
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="small">${service.replace('_', ' ').toUpperCase()}</span>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-${statusIcon} text-${statusColor} me-1"></i>
+                    <span class="small text-${statusColor}">${info.uptime}</span>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    container.innerHTML = statusHtml;
+}
+
+function startAutoRefresh() {
+    // Refresh dashboard data every 30 seconds
+    setInterval(loadDashboardData, 30000);
+    
+    // Refresh system status every 60 seconds
+    setInterval(loadSystemStatus, 60000);
+}
+
+function showNotification(message, type = 'info') {
+    const toast = document.getElementById('notificationToast');
+    const toastMessage = document.getElementById('toastMessage');
+    
+    toastMessage.textContent = message;
+    toast.className = `toast bg-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} text-white`;
+    
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+}
+</script>
+{% endblock %}

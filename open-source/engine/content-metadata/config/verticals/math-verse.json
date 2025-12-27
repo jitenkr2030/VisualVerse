@@ -1,0 +1,584 @@
+{
+  "id": "math-verse",
+  "name": "MathVerse",
+  "code": "MathVerse",
+  "version": "1.0.0",
+  "description": "Mathematical visualization platform covering algebra, calculus, linear algebra, probability, and proof visualization with step-wise problem decomposition",
+  "engine_version": "1.0.0",
+  "domains": [
+    {
+      "id": "algebra",
+      "name": "Algebra",
+      "description": "Fundamental algebraic concepts including equations, expressions, and functions",
+      "topics": [
+        {
+          "id": "expressions",
+          "name": "Algebraic Expressions",
+          "description": "Working with variables and numerical expressions",
+          "concepts": [
+            {
+              "id": "variables",
+              "name": "Variables and Constants",
+              "description": "Understanding variables as placeholders for unknown values",
+              "visualization_preferences": ["equation-layout", "variable-substitution"],
+              "difficulty_score": 0.3
+            },
+            {
+              "id": "exponents",
+              "name": "Exponents and Powers",
+              "description": "Working with exponential notation and properties",
+              "visualization_preferences": ["exponential-growth", "power-tower"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "polynomials",
+              "name": "Polynomials",
+              "description": "Understanding polynomial expressions and operations",
+              "visualization_preferences": ["polynomial-graph", "term-grouping"],
+              "difficulty_score": 0.5
+            }
+          ],
+          "difficulty_levels": ["foundational", "developing", "proficient"]
+        },
+        {
+          "id": "equations",
+          "name": "Equations",
+          "description": "Solving and understanding equations",
+          "concepts": [
+            {
+              "id": "linear-equations",
+              "name": "Linear Equations",
+              "description": "Solving equations with one or two variables",
+              "visualization_preferences": ["balance-scale", "solution-flow"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "quadratic-equations",
+              "name": "Quadratic Equations",
+              "description": "Solving second-degree polynomial equations",
+              "visualization_preferences": ["parabola-animation", "vertex-form", "root-visualization"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "systems-equations",
+              "name": "Systems of Equations",
+              "description": "Solving multiple equations simultaneously",
+              "visualization_preferences": ["intersection-graph", "matrix-solution"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient", "advanced"]
+        },
+        {
+          "id": "functions",
+          "name": "Functions",
+          "description": "Understanding and analyzing mathematical functions",
+          "concepts": [
+            {
+              "id": "function-basics",
+              "name": "Function Fundamentals",
+              "description": "Domain, range, and function notation",
+              "visualization_preferences": ["input-output-diagram", "mapping-animation"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "linear-functions",
+              "name": "Linear Functions",
+              "description": "Properties and graphs of linear functions",
+              "visualization_preferences": ["line-animation", "slope-explorer"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "quadratic-functions",
+              "name": "Quadratic Functions",
+              "description": "Properties and transformations of quadratic functions",
+              "visualization_preferences": ["parabola-transform", "vertex-form"],
+              "difficulty_score": 0.6
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient", "advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["6", "7", "8", "9", "10"],
+        "education_level": ["middle-school", "high-school"]
+      }
+    },
+    {
+      "id": "calculus",
+      "name": "Calculus",
+      "description": "Differential and integral calculus concepts",
+      "topics": [
+        {
+          "id": "limits",
+          "name": "Limits and Continuity",
+          "description": "Foundational concepts of limits and continuous functions",
+          "concepts": [
+            {
+              "id": "limit-intro",
+              "name": "Introduction to Limits",
+              "description": "Understanding limits through approaching behavior",
+              "visualization_preferences": ["approach-animation", "epsilon-delta"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "continuity",
+              "name": "Continuity",
+              "description": "Continuous functions and discontinuities",
+              "visualization_preferences": ["gap-animation", "hole-visualization"],
+              "difficulty_score": 0.6
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "derivatives",
+          "name": "Derivatives",
+          "description": "Understanding rates of change and differentiation",
+          "concepts": [
+            {
+              "id": "derivative-intro",
+              "name": "Introduction to Derivatives",
+              "description": "Tangent lines and instantaneous rate of change",
+              "visualization_preferences": ["secant-tangent", "slope-animation"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "differentiation-rules",
+              "name": "Differentiation Rules",
+              "description": "Power, product, quotient, and chain rules",
+              "visualization_preferences": ["rule-application", "chain-breakdown"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "applications-derivatives",
+              "name": "Applications of Derivatives",
+              "description": "Optimization, related rates, and motion",
+              "visualization_preferences": ["optimization-path", "rate-connection"],
+              "difficulty_score": 0.8
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        },
+        {
+          "id": "integrals",
+          "name": "Integrals",
+          "description": "Antiderivatives and definite integrals",
+          "concepts": [
+            {
+              "id": "antiderivatives",
+              "name": "Antiderivatives",
+              "description": "Finding functions whose derivatives are known",
+              "visualization_preferences": ["area-under-curve", "accumulation"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "definite-integrals",
+              "name": "Definite Integrals",
+              "description": "Computing exact areas under curves",
+              "visualization_preferences": ["riemann-sum", "area-approximation"],
+              "difficulty_score": 0.8
+            },
+            {
+              "id": "fundamental-theorem",
+              "name": "Fundamental Theorem of Calculus",
+              "description": "Connecting derivatives and integrals",
+              "visualization_preferences": ["theorem-connection", "area-derivative-link"],
+              "difficulty_score": 0.85
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "linear-algebra",
+      "name": "Linear Algebra",
+      "description": "Vector spaces, matrices, and linear transformations",
+      "topics": [
+        {
+          "id": "vectors",
+          "name": "Vectors and Vector Spaces",
+          "description": "Understanding vectors in n-dimensional space",
+          "concepts": [
+            {
+              "id": "vector-basics",
+              "name": "Vector Fundamentals",
+              "description": "Components, magnitude, and direction of vectors",
+              "visualization_preferences": ["vector-space", "arrow-animation"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "linear-combinations",
+              "name": "Linear Combinations",
+              "description": "Creating vectors through scalar multiplication and addition",
+              "visualization_preferences": ["span-visualization", "basis-explorer"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "matrices",
+          "name": "Matrices",
+          "description": "Matrix operations and properties",
+          "concepts": [
+            {
+              "id": "matrix-operations",
+              "name": "Matrix Operations",
+              "description": "Addition, multiplication, and transposition",
+              "visualization_preferences": ["matrix-transformation", "row-operation"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "determinants",
+              "name": "Determinants",
+              "description": "Computing and interpreting determinants",
+              "visualization_preferences": ["determinant-area", "matrix-decomposition"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "eigen",
+          "name": "Eigenvalues and Eigenvectors",
+          "description": "Understanding linear transformations through eigenvectors",
+          "concepts": [
+            {
+              "id": "eigen-basics",
+              "name": "Eigenvalue-Eigenvector Pairs",
+              "description": "Finding and interpreting eigenvector decompositions",
+              "visualization_preferences": ["eigen-animation", "transformation-eigen"],
+              "difficulty_score": 0.85
+            }
+          ],
+          "difficulty_levels": ["advanced", "expert"]
+        }
+      ],
+      "target_audience": {
+        "education_level": ["undergraduate", "graduate"]
+      }
+    },
+    {
+      "id": "probability",
+      "name": "Probability",
+      "description": "Probability theory and statistical concepts",
+      "topics": [
+        {
+          "id": "probability-basics",
+          "name": "Probability Fundamentals",
+          "description": "Basic probability concepts and rules",
+          "concepts": [
+            {
+              "id": "sample-space",
+              "name": "Sample Spaces",
+              "description": "Identifying all possible outcomes",
+              "visualization_preferences": ["outcome-grid", "tree-diagram"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "conditional-prob",
+              "name": "Conditional Probability",
+              "description": "Probability given prior information",
+              "visualization_preferences": ["probability-tree", "conditional-area"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "distributions",
+          "name": "Probability Distributions",
+          "description": "Discrete and continuous probability distributions",
+          "concepts": [
+            {
+              "id": "discrete-dist",
+              "name": "Discrete Distributions",
+              "description": "Binomial and Poisson distributions",
+              "visualization_preferences": ["distribution-bar", "binomial-tree"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "normal-dist",
+              "name": "Normal Distribution",
+              "description": "Properties of the bell curve",
+              "visualization_preferences": ["bell-curve", "z-score-visualization"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["10", "11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "proofs",
+      "name": "Proof and Reasoning",
+      "description": "Mathematical proof techniques and logical reasoning",
+      "topics": [
+        {
+          "id": "proof-techniques",
+          "name": "Proof Techniques",
+          "description": "Different methods of mathematical proof",
+          "concepts": [
+            {
+              "id": "direct-proof",
+              "name": "Direct Proof",
+              "description": "Logical deduction from assumptions to conclusion",
+              "visualization_preferences": ["proof-step", "logical-flow"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "proof-induction",
+              "name": "Proof by Induction",
+              "description": "Base case and inductive step methodology",
+              "visualization_preferences": ["induction-step", "domino-animation"],
+              "difficulty_score": 0.75
+            },
+            {
+              "id": "proof-contradiction",
+              "name": "Proof by Contradiction",
+              "description": "Assuming the opposite and deriving inconsistency",
+              "visualization_preferences": ["contradiction-path", "logic-splits"],
+              "difficulty_score": 0.8
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced", "expert"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["9", "10", "11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    }
+  ],
+  "visualization_types": {
+    "equation-layout": {
+      "id": "equation-layout",
+      "name": "Equation Layout",
+      "description": "Interactive mathematical equation display with step-by-step solving",
+      "category": "diagram",
+      "renderer": "math-equation",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "equation": {"type": "string"},
+          "steps": {"type": "array"},
+          "highlighted_terms": {"type": "array"}
+        }
+      },
+      "output_format": "svg",
+      "capabilities": ["interactive", "accessible", "responsive"]
+    },
+    "parabola-animation": {
+      "id": "parabola-animation",
+      "name": "Parabola Animation",
+      "description": "Animated visualization of quadratic functions and their properties",
+      "category": "animation",
+      "renderer": "math-graph",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive", "responsive"]
+    },
+    "proof-step": {
+      "id": "proof-step",
+      "name": "Proof Step Visualization",
+      "description": "Step-by-step visualization of mathematical proofs",
+      "category": "diagram",
+      "renderer": "proof-display",
+      "output_format": "svg",
+      "capabilities": ["interactive", "accessible"]
+    },
+    "graph-function": {
+      "id": "graph-function",
+      "name": "Function Graphing",
+      "description": "Dynamic graphing of mathematical functions",
+      "category": "chart",
+      "renderer": "math-graph",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "functions": {"type": "array"},
+          "domain": {"type": "array"},
+          "range": {"type": "array"}
+        }
+      },
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive", "responsive"]
+    },
+    "matrix-transformation": {
+      "id": "matrix-transformation",
+      "name": "Matrix Transformation",
+      "description": "Visualization of linear transformations represented by matrices",
+      "category": "animation",
+      "renderer": "matrix-viz",
+      "output_format": "webgl",
+      "capabilities": ["animated", "interactive", "3d"]
+    },
+    "riemann-sum": {
+      "id": "riemann-sum",
+      "name": "Riemann Sum Visualization",
+      "description": "Animated approximation of definite integrals using Riemann sums",
+      "category": "animation",
+      "renderer": "integral-viz",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive"]
+    },
+    "distribution-bar": {
+      "id": "distribution-bar",
+      "name": "Probability Distribution",
+      "description": "Bar and area charts for probability distributions",
+      "category": "chart",
+      "renderer": "distribution-viz",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "responsive"]
+    },
+    "logic-flow": {
+      "id": "logic-flow",
+      "name": "Logical Flow Diagram",
+      "description": "Flow diagrams showing logical progression in proofs",
+      "category": "flowchart",
+      "renderer": "flow-diagram",
+      "output_format": "svg",
+      "capabilities": ["interactive"]
+    }
+  },
+  "service_extensions": {
+    "concept_service": {
+      "class_path": "visualverse.engine.content_verticals.math_verse.MathVerseConceptService",
+      "module": "math_verse.services",
+      "priority": 90,
+      "config": {
+        "proof_templates": true,
+        "step_decomposition": true
+      }
+    },
+    "visual_service": {
+      "class_path": "visualverse.engine.content_verticals.math_verse.MathVerseVisualService",
+      "module": "math_verse.services",
+      "priority": 90,
+      "config": {
+        "math_renderer": "latex",
+        "graphing_engine": "function-plot"
+      }
+    },
+    "reasoning_engine": {
+      "class_path": "visualverse.engine.content_verticals.math_verse.MathVerseReasoningEngine",
+      "module": "math_verse.services",
+      "priority": 90,
+      "config": {
+        "supported_proofs": ["direct", "induction", "contradiction", "counterexample"]
+      }
+    }
+  },
+  "visualization_templates": {
+    "default_style": "clean-educational",
+    "color_schemes": [
+      {
+        "id": "math-light",
+        "name": "Light Educational",
+        "description": "Standard light theme for math content",
+        "colors": {
+          "primary": "#2563eb",
+          "secondary": "#3b82f6",
+          "accent": "#f59e0b",
+          "background": "#ffffff",
+          "text": "#1e293b",
+          "success": "#22c55e",
+          "warning": "#eab308",
+          "error": "#ef4444"
+        },
+        "theme": "light"
+      },
+      {
+        "id": "math-dark",
+        "name": "Dark Educational",
+        "description": "Dark theme optimized for math content",
+        "colors": {
+          "primary": "#60a5fa",
+          "secondary": "#93c5fd",
+          "accent": "#fbbf24",
+          "background": "#0f172a",
+          "text": "#e2e8f0",
+          "success": "#4ade80",
+          "warning": "#fcd34d",
+          "error": "#f87171"
+        },
+        "theme": "dark"
+      }
+    ],
+    "animation_presets": {
+      "function-plot": {
+        "id": "function-plot",
+        "name": "Function Plotting",
+        "description": "Standard animation for plotting mathematical functions",
+        "duration_ms": 2000,
+        "easing": "ease-in-out"
+      },
+      "equation-solve": {
+        "id": "equation-solve",
+        "name": "Equation Solving",
+        "description": "Step-by-step equation solving animation",
+        "duration_ms": 3000,
+        "easing": "ease-in-out"
+      }
+    },
+    "layout_patterns": [
+      {
+        "id": "math-centered",
+        "name": "Centered Math",
+        "description": "Centered layout for single equations",
+        "template": "math-centered",
+        "aspect_ratio": "16:9"
+      },
+      {
+        "id": "math-split",
+        "name": "Split Math",
+        "description": "Split layout for problem and solution",
+        "template": "math-split",
+        "aspect_ratio": "16:9"
+      }
+    ]
+  },
+  "curriculum_templates": [
+    {
+      "id": "standard-math",
+      "name": "Standard Mathematics Curriculum",
+      "description": "Traditional mathematics curriculum structure",
+      "structure": [
+        {"id": "intro", "name": "Introduction", "type": "lesson", "duration_hours": 1},
+        {"id": "core", "name": "Core Concepts", "type": "module", "duration_hours": 8},
+        {"id": "practice", "name": "Practice Problems", "type": "lesson", "duration_hours": 2},
+        {"id": "assessment", "name": "Unit Assessment", "type": "assessment"}
+      ],
+      "assessment_strategy": "mixed"
+    },
+    {
+      "id": "proof-based",
+      "name": "Proof-Based Curriculum",
+      "description": "Curriculum focused on proof skills",
+      "structure": [
+        {"id": "concept-intro", "name": "Concept Introduction", "type": "lesson", "duration_hours": 2},
+        {"id": "theorem-statement", "name": "Theorem Statement", "type": "lesson", "duration_hours": 1},
+        {"id": "proof-demo", "name": "Proof Demonstration", "type": "lesson", "duration_hours": 2},
+        {"id": "guided-proof", "name": "Guided Proof Practice", "type": "lesson", "duration_hours": 3},
+        {"id": "independent-proof", "name": "Independent Proofs", "type": "project", "duration_hours": 4}
+      ],
+      "assessment_strategy": "proof-focused"
+    }
+  ],
+  "metadata": {
+    "author": "VisualVerse Platform",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-12-26T00:00:00Z",
+    "tags": ["mathematics", "algebra", "calculus", "linear-algebra", "probability", "proofs"],
+    "license": "proprietary"
+  }
+}

@@ -1,0 +1,555 @@
+{% extends "base.html" %}
+
+{% block title %}Create Lesson - VisualVerse{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-header mb-4">
+                <h1><i class="fas fa-plus-circle me-2"></i>Create New Lesson</h1>
+                <p class="text-muted">Create engaging visual lessons using VisualVerse engine</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Lesson Creation Form -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Lesson Details</h4>
+                </div>
+                <div class="card-body">
+                    <form id="lessonForm">
+                        <!-- Lesson Title -->
+                        <div class="mb-3">
+                            <label for="lessonTitle" class="form-label">
+                                <i class="fas fa-heading me-1"></i>Lesson Title
+                            </label>
+                            <input type="text" class="form-control" id="lessonTitle" 
+                                   placeholder="Enter a descriptive title for your lesson" required>
+                        </div>
+
+                        <!-- Subject Selection -->
+                        <div class="mb-3">
+                            <label for="subjectSelect" class="form-label">
+                                <i class="fas fa-book me-1"></i>Subject
+                            </label>
+                            <select class="form-select" id="subjectSelect" required>
+                                <option value="">Choose a subject...</option>
+                            </select>
+                        </div>
+
+                        <!-- Concepts Preview -->
+                        <div class="mb-3" id="conceptsSection" style="display: none;">
+                            <label class="form-label">
+                                <i class="fas fa-lightbulb me-1"></i>Suggested Concepts
+                            </label>
+                            <div id="conceptsList" class="concepts-grid">
+                                <!-- Concepts will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Lesson Content -->
+                        <div class="mb-4">
+                            <label for="lessonContent" class="form-label">
+                                <i class="fas fa-edit me-1"></i>Lesson Content
+                            </label>
+                            <textarea class="form-control" id="lessonContent" rows="8" 
+                                      placeholder="Enter your lesson content here. Describe what you want to teach, key concepts, examples, etc." 
+                                      required></textarea>
+                            <div class="form-text">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Provide detailed content for better animations. Include key concepts, examples, and explanations.
+                            </div>
+                        </div>
+
+                        <!-- Lesson Options -->
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-cog me-1"></i>Lesson Options
+                            </label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="includeExamples" checked>
+                                        <label class="form-check-label" for="includeExamples">
+                                            Include Examples
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="interactiveElements">
+                                        <label class="form-check-label" for="interactiveElements">
+                                            Interactive Elements
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary" id="createLessonBtn">
+                                <i class="fas fa-magic me-2"></i>Create Lesson
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="saveDraftBtn">
+                                <i class="fas fa-save me-2"></i>Save Draft
+                            </button>
+                            <button type="button" class="btn btn-outline-info" id="previewBtn">
+                                <i class="fas fa-eye me-2"></i>Preview
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Help & Tips -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-lightbulb me-2"></i>Tips for Great Lessons
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="tip-item mb-3">
+                        <h6><i class="fas fa-check text-success me-1"></i>Be Specific</h6>
+                        <p class="small text-muted mb-0">Include specific examples and step-by-step explanations.</p>
+                    </div>
+                    <div class="tip-item mb-3">
+                        <h6><i class="fas fa-check text-success me-1"></i>Use Visual Language</h6>
+                        <p class="small text-muted mb-0">Describe what should be visualized (graphs, diagrams, animations).</p>
+                    </div>
+                    <div class="tip-item mb-3">
+                        <h6><i class="fas fa-check text-success me-1"></i>Clear Learning Objectives</h6>
+                        <p class="small text-muted mb-0">State what students should learn by the end of the lesson.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Templates -->
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-template me-2"></i>Quick Templates
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="template-item mb-2">
+                        <button class="btn btn-outline-primary btn-sm w-100 text-start" onclick="loadTemplate('math_proof')">
+                            <i class="fas fa-calculator me-2"></i>Mathematical Proof
+                        </button>
+                    </div>
+                    <div class="template-item mb-2">
+                        <button class="btn btn-outline-primary btn-sm w-100 text-start" onclick="loadTemplate('physics_concept')">
+                            <i class="fas fa-atom me-2"></i>Physics Concept
+                        </button>
+                    </div>
+                    <div class="template-item mb-2">
+                        <button class="btn btn-outline-primary btn-sm w-100 text-start" onclick="loadTemplate('algorithm_demo')">
+                            <i class="fas fa-code me-2"></i>Algorithm Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Lessons -->
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-clock me-2"></i>Recent Lessons
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div id="recentLessons">
+                        <div class="text-center py-3">
+                            <i class="fas fa-spinner fa-spin text-muted"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rendering Progress Modal -->
+<div class="modal fade" id="renderingModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-cogs me-2"></i>Creating Your Lesson
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="rendering-progress">
+                    <div class="progress mb-3">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                             role="progressbar" style="width: 0%" id="renderProgressBar"></div>
+                    </div>
+                    <div id="renderStatus" class="text-center">
+                        <i class="fas fa-cog fa-spin fa-2x text-primary mb-3"></i>
+                        <p>Initializing VisualVerse engine...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let currentLessonId = null;
+let socket = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadSubjects();
+    loadRecentLessons();
+    initializeEventListeners();
+});
+
+function initializeEventListeners() {
+    // Form submission
+    document.getElementById('lessonForm').addEventListener('submit', createLesson);
+    
+    // Save draft
+    document.getElementById('saveDraftBtn').addEventListener('click', saveDraft);
+    
+    // Preview
+    document.getElementById('previewBtn').addEventListener('click', previewLesson);
+    
+    // Subject change
+    document.getElementById('subjectSelect').addEventListener('change', loadConcepts);
+    
+    // Templates
+    document.querySelectorAll('.template-item button').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const template = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            loadTemplate(template);
+        });
+    });
+}
+
+function loadSubjects() {
+    fetch('/api/subjects')
+        .then(response => response.json())
+        .then(data => {
+            const select = document.getElementById('subjectSelect');
+            data.subjects.forEach(subject => {
+                const option = document.createElement('option');
+                option.value = subject.id;
+                option.textContent = `${subject.name} (v${subject.version})`;
+                select.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading subjects:', error);
+            showNotification('Error loading subjects', 'error');
+        });
+}
+
+function loadConcepts() {
+    const subjectSelect = document.getElementById('subjectSelect');
+    const subjectId = subjectSelect.value;
+    const conceptsSection = document.getElementById('conceptsSection');
+    
+    if (!subjectId) {
+        conceptsSection.style.display = 'none';
+        return;
+    }
+    
+    fetch(`/api/subjects/${subjectId}/concepts`)
+        .then(response => response.json())
+        .then(data => {
+            const conceptsList = document.getElementById('conceptsList');
+            conceptsList.innerHTML = '';
+            
+            data.concepts.forEach(concept => {
+                const conceptCard = document.createElement('div');
+                conceptCard.className = 'concept-card border rounded p-2 mb-2';
+                conceptCard.innerHTML = `
+                    <h6 class="mb-1">${concept.title}</h6>
+                    <p class="small text-muted mb-1">${concept.description}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-${getDifficultyColor(concept.difficulty)}">${concept.difficulty}</span>
+                        <small class="text-muted">${concept.estimated_duration}min</small>
+                    </div>
+                `;
+                conceptsList.appendChild(conceptCard);
+            });
+            
+            conceptsSection.style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error loading concepts:', error);
+        });
+}
+
+function createLesson(e) {
+    e.preventDefault();
+    
+    const formData = {
+        title: document.getElementById('lessonTitle').value,
+        subject: document.getElementById('subjectSelect').value,
+        content: document.getElementById('lessonContent').value,
+        includeExamples: document.getElementById('includeExamples').checked,
+        interactiveElements: document.getElementById('interactiveElements').checked
+    };
+    
+    // Validate form
+    if (!formData.title || !formData.subject || !formData.content) {
+        showNotification('Please fill in all required fields', 'error');
+        return;
+    }
+    
+    // Show rendering modal
+    const renderingModal = new bootstrap.Modal(document.getElementById('renderingModal'));
+    renderingModal.show();
+    
+    // Create lesson
+    fetch('/api/lessons', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            currentLessonId = data.lesson_id;
+            startRendering();
+            loadRecentLessons(); // Refresh recent lessons
+        } else {
+            throw new Error(data.error || 'Failed to create lesson');
+        }
+    })
+    .catch(error => {
+        console.error('Error creating lesson:', error);
+        showNotification('Error creating lesson: ' + error.message, 'error');
+        renderingModal.hide();
+    });
+}
+
+function startRendering() {
+    if (!currentLessonId) return;
+    
+    // Initialize Socket.IO for real-time updates
+    socket = io();
+    
+    socket.on('connect', function() {
+        console.log('Connected for lesson rendering');
+        socket.emit('join_lesson', {lesson_id: currentLessonId});
+    });
+    
+    socket.on('render_progress', function(data) {
+        updateRenderingProgress(data);
+    });
+    
+    // Start rendering
+    fetch(`/api/lessons/${currentLessonId}/render`, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (!data.success) {
+            throw new Error(data.error || 'Failed to start rendering');
+        }
+    })
+    .catch(error => {
+        console.error('Error starting render:', error);
+        showNotification('Error starting render: ' + error.message, 'error');
+    });
+}
+
+function updateRenderingProgress(data) {
+    const progressBar = document.getElementById('renderProgressBar');
+    const statusDiv = document.getElementById('renderStatus');
+    
+    progressBar.style.width = data.progress + '%';
+    
+    if (data.messages && data.messages.length > 0) {
+        const lastMessage = data.messages[data.messages.length - 1];
+        statusDiv.innerHTML = `
+            <div class="mb-3">
+                <i class="fas ${getStatusIcon(data.status)} fa-2x text-${getStatusColor(data.status)} mb-3"></i>
+                <p class="mb-0">${lastMessage.message}</p>
+                <small class="text-muted">Progress: ${data.progress}%</small>
+            </div>
+        `;
+    }
+    
+    if (data.status === 'completed') {
+        setTimeout(() => {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('renderingModal'));
+            modal.hide();
+            showNotification('Lesson created successfully!', 'success');
+            // Redirect to lesson manager or preview
+            setTimeout(() => {
+                window.location.href = `/lesson-manager`;
+            }, 1500);
+        }, 1000);
+    } else if (data.status === 'error') {
+        const modal = bootstrap.Modal.getInstance(document.getElementById('renderingModal'));
+        modal.hide();
+        showNotification('Error creating lesson', 'error');
+    }
+}
+
+function saveDraft() {
+    // Implementation for saving draft
+    showNotification('Draft saved successfully', 'success');
+}
+
+function previewLesson() {
+    // Implementation for preview
+    showNotification('Preview feature coming soon', 'info');
+}
+
+function loadRecentLessons() {
+    fetch('/api/lessons')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('recentLessons');
+            if (data.lessons.length === 0) {
+                container.innerHTML = '<p class="text-muted text-center">No recent lessons</p>';
+                return;
+            }
+            
+            const recentLessons = data.lessons.slice(-3).reverse();
+            container.innerHTML = recentLessons.map(lesson => `
+                <div class="lesson-item mb-2 p-2 border rounded">
+                    <h6 class="mb-1">${lesson.title}</h6>
+                    <small class="text-muted">${lesson.subject} • ${new Date(lesson.created_at).toLocaleDateString()}</small>
+                </div>
+            `).join('');
+        })
+        .catch(error => {
+            console.error('Error loading recent lessons:', error);
+        });
+}
+
+function loadTemplate(templateType) {
+    const templates = {
+        'math_proof': {
+            title: 'Mathematical Proof Example',
+            content: `Let's prove that the sum of the first n natural numbers equals n(n+1)/2.
+
+We want to show that: 1 + 2 + 3 + ... + n = n(n+1)/2
+
+Using mathematical induction:
+Base case: For n=1, 1 = 1(1+1)/2 = 1 ✓
+
+Inductive step: Assume true for n=k
+1 + 2 + ... + k = k(k+1)/2
+
+For n=k+1:
+1 + 2 + ... + k + (k+1) = k(k+1)/2 + (k+1)
+= (k(k+1) + 2(k+1))/2
+= (k+2)(k+1)/2
+= (k+1)(k+2)/2 ✓
+
+Therefore, the formula is proven for all natural numbers n.`
+        },
+        'physics_concept': {
+            title: 'Physics Concept Example',
+            content: `Understanding Newton's Second Law of Motion.
+
+F = ma (Force equals mass times acceleration)
+
+This fundamental law describes the relationship between force, mass, and acceleration:
+
+1. Force causes acceleration
+2. Acceleration is directly proportional to force
+3. Acceleration is inversely proportional to mass
+
+Example: If you apply 10N force to a 2kg object:
+a = F/m = 10N/2kg = 5 m/s²
+
+Visualize this with a cart moving on a frictionless surface, showing how increasing force or decreasing mass affects acceleration.`
+        },
+        'algorithm_demo': {
+            title: 'Algorithm Example',
+            content: `Binary Search Algorithm Demo.
+
+Problem: Find target value in sorted array [1, 3, 5, 7, 9, 11, 13, 15]
+
+Step-by-step visualization:
+1. Check middle element (index 3) = 7
+2. If target > 7, search right half [9, 11, 13, 15]
+3. If target < 7, search left half [1, 3, 5]
+4. Repeat until found
+
+Time Complexity: O(log n)
+Space Complexity: O(1)
+
+Show the array splitting visually with pointers indicating search boundaries.`
+        }
+    };
+    
+    const template = templates[templateType];
+    if (template) {
+        document.getElementById('lessonTitle').value = template.title;
+        document.getElementById('lessonContent').value = template.content;
+        
+        // Auto-select appropriate subject
+        if (templateType === 'math_proof') {
+            document.getElementById('subjectSelect').value = 'math';
+        } else if (templateType === 'physics_concept') {
+            document.getElementById('subjectSelect').value = 'physics';
+        } else if (templateType === 'algorithm_demo') {
+            document.getElementById('subjectSelect').value = 'algorithms';
+        }
+        
+        loadConcepts();
+        showNotification('Template loaded successfully', 'success');
+    }
+}
+
+function getDifficultyColor(difficulty) {
+    switch(difficulty.toLowerCase()) {
+        case 'beginner': return 'success';
+        case 'intermediate': return 'warning';
+        case 'advanced': return 'danger';
+        default: return 'secondary';
+    }
+}
+
+function getStatusColor(status) {
+    switch(status) {
+        case 'completed': return 'success';
+        case 'processing': return 'info';
+        case 'error': return 'danger';
+        default: return 'secondary';
+    }
+}
+
+function getStatusIcon(status) {
+    switch(status) {
+        case 'completed': return 'fa-check-circle';
+        case 'processing': return 'fa-cog fa-spin';
+        case 'error': return 'fa-exclamation-circle';
+        default: return 'fa-clock';
+    }
+}
+
+function showNotification(message, type = 'info') {
+    const toast = document.getElementById('notificationToast');
+    const toastMessage = document.getElementById('toastMessage');
+    
+    toastMessage.textContent = message;
+    toast.className = `toast bg-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} text-white`;
+    
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+}
+</script>
+{% endblock %}

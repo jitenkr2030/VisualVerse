@@ -1,0 +1,552 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://visualverse.io/schemas/vertical-config/v1",
+  "title": "Vertical Platform Configuration Schema",
+  "description": "Configuration schema for defining a vertical platform specialization in VisualVerse",
+  "type": "object",
+  "required": ["id", "name", "version", "domains", "visualization_types", "service_extensions"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "examples": ["math-verse", "physics-verse", "chem-verse", "algo-verse", "fin-verse"],
+      "description": "Unique identifier for the vertical (lowercase with hyphens)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the vertical"
+    },
+    "code": {
+      "type": "string",
+      "pattern": "^[A-Z][a-zA-Z]*$",
+      "description": "Short code for the vertical (CamelCase)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Version of the vertical configuration"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the vertical's purpose and scope"
+    },
+    "engine_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Minimum required engine version"
+    },
+    "domains": {
+      "type": "array",
+      "description": "List of knowledge domains covered by this vertical",
+      "items": {
+        "$ref": "#/$defs/domain"
+      },
+      "minItems": 1
+    },
+    "visualization_types": {
+      "type": "object",
+      "description": "Domain-specific visualization types supported by this vertical",
+      "additionalProperties": {
+        "$ref": "#/$defs/visualization_type"
+      }
+    },
+    "service_extensions": {
+      "type": "object",
+      "description": "Service extensions specific to this vertical",
+      "properties": {
+        "concept_service": {
+          "$ref": "#/$defs/service_extension"
+        },
+        "visual_service": {
+          "$ref": "#/$defs/service_extension"
+        },
+        "reasoning_engine": {
+          "$ref": "#/$defs/service_extension"
+        },
+        "animation_service": {
+          "$ref": "#/$defs/service_extension"
+        },
+        "recommendation_service": {
+          "$ref": "#/$defs/service_extension"
+        }
+      }
+    },
+    "visualization_templates": {
+      "type": "object",
+      "description": "Customization hooks for visualization templates",
+      "properties": {
+        "default_style": {
+          "type": "string",
+          "description": "Default visual style for this vertical"
+        },
+        "color_schemes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/color_scheme"
+          }
+        },
+        "animation_presets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/animation_preset"
+          }
+        },
+        "layout_patterns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/layout_pattern"
+          }
+        }
+      }
+    },
+    "curriculum_templates": {
+      "type": "array",
+      "description": "Curriculum templates specific to this vertical",
+      "items": {
+        "$ref": "#/$defs/curriculum_template"
+      }
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    }
+  },
+  "$defs": {
+    "domain": {
+      "type": "object",
+      "required": ["id", "name", "topics"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique domain identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the domain"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the domain"
+        },
+        "topics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/topic"
+          },
+          "minItems": 1
+        },
+        "target_audience": {
+          "$ref": "#/$defs/target_audience"
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Prerequisite domains or verticals"
+        }
+      }
+    },
+    "topic": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique topic identifier within the domain"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the topic"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the topic"
+        },
+        "concepts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/concept"
+          }
+        },
+        "difficulty_levels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["foundational", "developing", "proficient", "advanced", "expert"]
+          }
+        },
+        "estimated_hours": {
+          "type": "number",
+          "description": "Estimated instructional hours"
+        }
+      }
+    },
+    "concept": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique concept identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the concept"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the concept"
+        },
+        "visualization_preferences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Preferred visualization types for this concept"
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Prerequisite concept IDs"
+        },
+        "difficulty_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Inherent difficulty of the concept"
+        }
+      }
+    },
+    "visualization_type": {
+      "type": "object",
+      "required": ["id", "name", "renderer"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique visualization type identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the visualization type"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the visualization type"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["diagram", "animation", "interactive", "simulation", "chart", "3d-model", "graph", "flowchart"]
+        },
+        "renderer": {
+          "type": "string",
+          "description": "Renderer identifier for this visualization type"
+        },
+        "input_schema": {
+          "type": "object",
+          "description": "JSON schema for visualization input data"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": ["svg", "canvas", "webgl", "html5", "video"]
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["animated", "interactive", "responsive", "accessible", "3d", "real-time"]
+          }
+        },
+        "customization_hooks": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "service_extension": {
+      "type": "object",
+      "required": ["class_path", "module"],
+      "properties": {
+        "class_path": {
+          "type": "string",
+          "description": "Python class path for the extension"
+        },
+        "module": {
+          "type": "string",
+          "description": "Module containing the extension class"
+        },
+        "config": {
+          "type": "object",
+          "description": "Configuration for the extension"
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Loading priority (higher loads first)"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Other extensions this depends on"
+        }
+      }
+    },
+    "color_scheme": {
+      "type": "object",
+      "required": ["id", "name", "colors"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique color scheme identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the color scheme"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of when to use this scheme"
+        },
+        "colors": {
+          "type": "object",
+          "properties": {
+            "primary": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            },
+            "secondary": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            },
+            "accent": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            },
+            "background": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            },
+            "text": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            },
+            "success": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            },
+            "warning": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            },
+            "error": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            }
+          },
+          "required": ["primary", "secondary", "background", "text"]
+        },
+        "theme": {
+          "type": "string",
+          "enum": ["light", "dark", "high-contrast", "colorblind-friendly"]
+        }
+      }
+    },
+    "animation_preset": {
+      "type": "object",
+      "required": ["id", "name", "keyframes"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique preset identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the preset"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the animation style"
+        },
+        "keyframes": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "description": "Animation keyframe definitions"
+        },
+        "duration_ms": {
+          "type": "integer",
+          "description": "Default duration in milliseconds"
+        },
+        "easing": {
+          "type": "string",
+          "description": "CSS easing function or custom easing"
+        }
+      }
+    },
+    "layout_pattern": {
+      "type": "object",
+      "required": ["id", "name", "template"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique layout pattern identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the layout pattern"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of when to use this layout"
+        },
+        "template": {
+          "type": "string",
+          "description": "Template identifier or path"
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "description": "Aspect ratio (e.g., '16:9', '4:3', '1:1')"
+        },
+        "responsive_breakpoints": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Breakpoints in pixels"
+        }
+      }
+    },
+    "curriculum_template": {
+      "type": "object",
+      "required": ["id", "name", "structure"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique template identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the template"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the curriculum structure"
+        },
+        "structure": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/curriculum_section"
+          }
+        },
+        "assessment_strategy": {
+          "type": "string",
+          "description": "Assessment approach for this curriculum"
+        },
+        "progression_rules": {
+          "type": "object",
+          "description": "Rules for concept progression"
+        }
+      }
+    },
+    "curriculum_section": {
+      "type": "object",
+      "required": ["id", "name", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique section identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the section"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["unit", "chapter", "module", "lesson", "assessment", "project"]
+        },
+        "concepts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "duration_hours": {
+          "type": "number",
+          "description": "Estimated duration in hours"
+        },
+        "assessment_id": {
+          "type": "string",
+          "description": "Associated assessment ID"
+        }
+      }
+    },
+    "target_audience": {
+      "type": "object",
+      "properties": {
+        "grade_levels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "age_range": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "integer"
+            },
+            "max": {
+              "type": "integer"
+            }
+          }
+        },
+        "education_level": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["elementary", "middle-school", "high-school", "undergraduate", "graduate", "professional"]
+          }
+        },
+        "prior_knowledge": {
+          "type": "string",
+          "description": "Expected prior knowledge level"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["created_at", "updated_at"],
+      "properties": {
+        "author": {
+          "type": "string",
+          "description": "Configuration author"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "license": {
+          "type": "string",
+          "description": "License for this configuration"
+        }
+      }
+    }
+  }
+}

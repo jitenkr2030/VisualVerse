@@ -1,0 +1,116 @@
+{
+  "framework": {
+    "id": "sample-math-standards",
+    "name": "Sample Mathematics Standards",
+    "code": "SAMPLE-MATH",
+    "framework_type": "national",
+    "version": "1.0",
+    "region": "International",
+    "description": "Sample mathematics curriculum standards for demonstration purposes",
+    "subject_scope": ["mathematics"],
+    "grade_range": ["6", "12"],
+    "publisher": "Sample Education Board"
+  },
+  "standards": [
+    {
+      "code": "MATH.6.EE.A.1",
+      "category": "Expressions and Equations",
+      "subcategory": "Applying and extending previous understandings of arithmetic to algebraic expressions",
+      "description": "Write and evaluate numerical expressions involving whole-number exponents.",
+      "difficulty": "developing",
+      "grade_levels": ["6"],
+      "suggested_instructional_hours": 4.0,
+      "assessment_methods": ["formative", "summative"]
+    },
+    {
+      "code": "MATH.6.EE.A.2",
+      "category": "Expressions and Equations",
+      "subcategory": "Applying and extending previous understandings of arithmetic to algebraic expressions",
+      "description": "Write, read, and evaluate expressions in which letters stand for numbers.",
+      "difficulty": "developing",
+      "grade_levels": ["6"],
+      "suggested_instructional_hours": 6.0,
+      "assessment_methods": ["formative", "summative"]
+    },
+    {
+      "code": "MATH.7.EE.A.1",
+      "category": "Expressions and Equations",
+      "subcategory": "Solve real-life and mathematical problems using numerical and algebraic expressions and equations",
+      "description": "Apply properties of operations to add and subtract linear expressions.",
+      "difficulty": "developing",
+      "grade_levels": ["7"],
+      "suggested_instructional_hours": 5.0,
+      "assessment_methods": ["formative"]
+    },
+    {
+      "code": "MATH.8.EE.A.1",
+      "category": "Expressions and Equations",
+      "subcategory": "Work with radicals and integer exponents",
+      "description": "Know and apply the properties of integer exponents.",
+      "difficulty": "proficient",
+      "grade_levels": ["8"],
+      "suggested_instructional_hours": 8.0,
+      "assessment_methods": ["formative", "summative"]
+    },
+    {
+      "code": "MATH.HSA.REI.A.1",
+      "category": "Reasoning with Equations and Inequalities",
+      "subcategory": "Understand solving equations as a process of reasoning and explain the reasoning",
+      "description": "Explain each step in solving a simple equation as following from the equality of numbers asserted at the previous step, starting from the assumption that the original equation has a solution.",
+      "difficulty": "proficient",
+      "grade_levels": ["9", "10"],
+      "suggested_instructional_hours": 6.0,
+      "assessment_methods": ["formative", "summative"]
+    },
+    {
+      "code": "MATH.HSA.REI.D.10",
+      "category": "Reasoning with Equations and Inequalities",
+      "subcategory": "Represent and solve equations and inequalities graphically",
+      "description": "Understand that the graph of an equation in two variables is the set of all its solutions plotted in the coordinate plane, often forming a curve.",
+      "difficulty": "proficient",
+      "grade_levels": ["9", "10", "11"],
+      "suggested_instructional_hours": 8.0,
+      "assessment_methods": ["formative", "summative"]
+    },
+    {
+      "code": "MATH.HSF.IF.A.1",
+      "category": "Interpreting Functions",
+      "subcategory": "Understand the concept of a function and use function notation",
+      "description": "Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range.",
+      "difficulty": "proficient",
+      "grade_levels": ["9", "10", "11"],
+      "suggested_instructional_hours": 4.0,
+      "assessment_methods": ["formative"]
+    },
+    {
+      "code": "MATH.HSF.IF.C.7",
+      "category": "Interpreting Functions",
+      "subcategory": "Analyze functions using different representations",
+      "description": "Graph functions expressed symbolically and show key features of the graph.",
+      "difficulty": "advanced",
+      "grade_levels": ["10", "11", "12"],
+      "suggested_instructional_hours": 10.0,
+      "assessment_methods": ["formative", "summative", "performance"]
+    },
+    {
+      "code": "MATH.HSF.BF.A.1",
+      "category": "Building Functions",
+      "subcategory": "Build a function that models a relationship between two quantities",
+      "description": "Write a function that describes a relationship between two quantities.",
+      "difficulty": "advanced",
+      "grade_levels": ["10", "11", "12"],
+      "suggested_instructional_hours": 8.0,
+      "assessment_methods": ["formative", "summative"]
+    },
+    {
+      "code": "MATH.HSF.TF.A.1",
+      "category": "Trigonometric Functions",
+      "subcategory": "Extend the domain of trigonometric functions using the unit circle",
+      "description": "Understand radian measure of an angle as the length of the arc on the unit circle subtended by the angle.",
+      "difficulty": "advanced",
+      "grade_levels": ["11", "12"],
+      "suggested_instructional_hours": 12.0,
+      "assessment_methods": ["formative", "summative"]
+    }
+  ]
+}

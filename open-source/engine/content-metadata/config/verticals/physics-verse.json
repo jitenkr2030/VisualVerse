@@ -1,0 +1,577 @@
+{
+  "id": "physics-verse",
+  "name": "PhysicsVerse",
+  "code": "PhysicsVerse",
+  "version": "1.0.0",
+  "description": "Physics visualization platform covering mechanics, optics, and electromagnetism with dynamic simulations that convert equations into motion",
+  "engine_version": "1.0.0",
+  "domains": [
+    {
+      "id": "mechanics",
+      "name": "Classical Mechanics",
+      "description": "Motion, forces, and energy in physical systems",
+      "topics": [
+        {
+          "id": "kinematics",
+          "name": "Kinematics",
+          "description": "Describing motion without considering forces",
+          "concepts": [
+            {
+              "id": "motion-basics",
+              "name": "Motion Fundamentals",
+              "description": "Position, velocity, and acceleration",
+              "visualization_preferences": ["motion-timeline", "position-graph"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "projectile-motion",
+              "name": "Projectile Motion",
+              "description": "Motion under constant gravitational acceleration",
+              "visualization_preferences": ["trajectory-animation", "component-breakdown"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "circular-motion",
+              "name": "Circular Motion",
+              "description": "Motion in circular paths with centripetal acceleration",
+              "visualization_preferences": ["circular-path", "centripetal-force"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient", "advanced"]
+        },
+        {
+          "id": "dynamics",
+          "name": "Dynamics",
+          "description": "Forces and their effects on motion",
+          "concepts": [
+            {
+              "id": "newton-laws",
+              "name": "Newton's Laws of Motion",
+              "description": "Fundamental laws governing force and motion",
+              "visualization_preferences": ["force-diagram", "law-demonstration"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "friction-forces",
+              "name": "Friction and Forces",
+              "description": "Contact forces and their properties",
+              "visualization_preferences": ["friction-simulation", "surface-interaction"],
+              "difficulty_score": 0.55
+            },
+            {
+              "id": "spring-forces",
+              "name": "Spring Forces",
+              "description": "Hooke's Law and elastic forces",
+              "visualization_preferences": ["spring-animation", "force-extension"],
+              "difficulty_score": 0.55
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient", "advanced"]
+        },
+        {
+          "id": "energy",
+          "name": "Energy and Work",
+          "description": "Energy transformation and conservation",
+          "concepts": [
+            {
+              "id": "work-energy",
+              "name": "Work and Energy",
+              "description": "Relationship between work and energy transfer",
+              "visualization_preferences": ["work-animation", "energy-bar"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "kinetic-energy",
+              "name": "Kinetic Energy",
+              "description": "Energy of motion and its calculations",
+              "visualization_preferences": ["energy-transfer", "velocity-mass-effect"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "conservation-energy",
+              "name": "Conservation of Energy",
+              "description": "Energy transformation in closed systems",
+              "visualization_preferences": ["energy-conversion", "system-animation"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["9", "10", "11", "12"],
+        "education_level": ["high-school"]
+      }
+    },
+    {
+      "id": "optics",
+      "name": "Optics",
+      "description": "Light behavior and optical systems",
+      "topics": [
+        {
+          "id": "geometric-optics",
+          "name": "Geometric Optics",
+          "description": "Light propagation using ray approximations",
+          "concepts": [
+            {
+              "id": "light-rays",
+              "name": "Light Rays",
+              "description": "Understanding light as rays",
+              "visualization_preferences": ["ray-diagram", "light-source"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "reflection",
+              "name": "Reflection",
+              "description": "Light bouncing off surfaces",
+              "visualization_preferences": ["reflection-animation", "law-of-reflection"],
+              "difficulty_score": 0.45
+            },
+            {
+              "id": "refraction",
+              "name": "Refraction",
+              "description": "Light bending at interface between media",
+              "visualization_preferences": ["refraction-animation", "snells-law"],
+              "difficulty_score": 0.6
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient"]
+        },
+        {
+          "id": "lenses-mirrors",
+          "name": "Lenses and Mirrors",
+          "description": "Image formation by optical elements",
+          "concepts": [
+            {
+              "id": "converging-lenses",
+              "name": "Converging Lenses",
+              "description": "Convex lenses and image formation",
+              "visualization_preferences": ["lens-ray-trace", "image-position"],
+              "difficulty_score": 0.65
+            },
+            {
+              "id": "diverging-lenses",
+              "name": "Diverging Lenses",
+              "description": "Concave lenses and virtual images",
+              "visualization_preferences": ["lens-ray-trace", "virtual-image"],
+              "difficulty_score": 0.65
+            },
+            {
+              "id": "optical-instruments",
+              "name": "Optical Instruments",
+              "description": "Microscopes, telescopes, and cameras",
+              "visualization_preferences": ["instrument-diagram", "light-path"],
+              "difficulty_score": 0.75
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "wave-optics",
+          "name": "Wave Optics",
+          "description": "Light as an electromagnetic wave",
+          "concepts": [
+            {
+              "id": "interference",
+              "name": "Interference",
+              "description": "Wave superposition and interference patterns",
+              "visualization_preferences": ["wave-interference", "pattern-formation"],
+              "difficulty_score": 0.8
+            },
+            {
+              "id": "diffraction",
+              "name": "Diffraction",
+              "description": "Wave bending around obstacles",
+              "visualization_preferences": ["diffraction-pattern", "single-slit"],
+              "difficulty_score": 0.85
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "electromagnetism",
+      "name": "Electromagnetism",
+      "description": "Electric and magnetic fields and their interactions",
+      "topics": [
+        {
+          "id": "electrostatics",
+          "name": "Electrostatics",
+          "description": "Electric charges at rest",
+          "concepts": [
+            {
+              "id": "electric-force",
+              "name": "Electric Force",
+              "description": "Coulomb's Law and electrostatic forces",
+              "visualization_preferences": ["charge-interaction", "field-line"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "electric-field",
+              "name": "Electric Field",
+              "description": "Field concept and field lines",
+              "visualization_preferences": ["field-visualization", "field-line-animation"],
+              "difficulty_score": 0.65
+            },
+            {
+              "id": "electric-potential",
+              "name": "Electric Potential",
+              "description": "Potential energy and potential difference",
+              "visualization_preferences": ["potential-surface", "equipotential-lines"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "magnetic-fields",
+          "name": "Magnetic Fields",
+          "description": "Magnetic fields and their sources",
+          "concepts": [
+            {
+              "id": "magnetic-field",
+              "name": "Magnetic Field Basics",
+              "description": "Field lines and magnetic field strength",
+              "visualization_preferences": ["field-line-3d", "magnet-visualization"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "electromagnetism",
+              "name": "Electromagnetism",
+              "description": "Relationship between electricity and magnetism",
+              "visualization_preferences": ["solenoid-field", "current-field"],
+              "difficulty_score": 0.8
+            },
+            {
+              "id": "electromagnetic-induction",
+              "name": "Electromagnetic Induction",
+              "description": "Faraday's Law and induced currents",
+              "visualization_preferences": ["induction-animation", "magnet-coil"],
+              "difficulty_score": 0.85
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "thermodynamics",
+      "name": "Thermodynamics",
+      "description": "Heat, temperature, and energy transfer",
+      "topics": [
+        {
+          "id": "heat-transfer",
+          "name": "Heat Transfer",
+          "description": "Conduction, convection, and radiation",
+          "concepts": [
+            {
+              "id": "conduction",
+              "name": "Conduction",
+              "description": "Heat transfer through direct contact",
+              "visualization_preferences": ["particle-collision", "temperature-gradient"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "convection",
+              "name": "Convection",
+              "description": "Heat transfer through fluid motion",
+              "visualization_preferences": ["fluid-circulation", "convection-current"],
+              "difficulty_score": 0.55
+            },
+            {
+              "id": "radiation",
+              "name": "Radiation",
+              "description": "Heat transfer through electromagnetic waves",
+              "visualization_preferences": ["wave-emission", "spectrum-visualization"],
+              "difficulty_score": 0.6
+            }
+          ],
+          "difficulty_levels": ["proficient"]
+        },
+        {
+          "id": "thermodynamic-laws",
+          "name": "Laws of Thermodynamics",
+          "description": "Fundamental laws governing energy transformation",
+          "concepts": [
+            {
+              "id": "first-law",
+              "name": "First Law of Thermodynamics",
+              "description": "Energy conservation in thermodynamic processes",
+              "visualization_preferences": ["energy-flow-diagram", "cycle-animation"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "second-law",
+              "name": "Second Law of Thermodynamics",
+              "description": "Entropy and thermodynamic efficiency",
+              "visualization_preferences": ["entropy-animation", "heat-engine"],
+              "difficulty_score": 0.85
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    }
+  ],
+  "visualization_types": {
+    "motion-timeline": {
+      "id": "motion-timeline",
+      "name": "Motion Timeline",
+      "description": "Time-based visualization of object motion",
+      "category": "animation",
+      "renderer": "physics-motion",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive", "responsive"]
+    },
+    "trajectory-animation": {
+      "id": "trajectory-animation",
+      "name": "Trajectory Animation",
+      "description": "Animated path of projectiles and moving objects",
+      "category": "animation",
+      "renderer": "physics-motion",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive", "real-time"]
+    },
+    "force-diagram": {
+      "id": "force-diagram",
+      "name": "Force Diagram",
+      "description": "Vector diagram showing all forces on an object",
+      "category": "diagram",
+      "renderer": "vector-diagram",
+      "output_format": "svg",
+      "capabilities": ["interactive", "responsive"]
+    },
+    "vector-field": {
+      "id": "vector-field",
+      "name": "Vector Field Visualization",
+      "description": "2D or 3D visualization of vector fields",
+      "category": "simulation",
+      "renderer": "field-visualizer",
+      "output_format": "webgl",
+      "capabilities": ["animated", "interactive", "3d", "real-time"]
+    },
+    "ray-diagram": {
+      "id": "ray-diagram",
+      "name": "Ray Diagram",
+      "description": "Light ray tracing for optics",
+      "category": "diagram",
+      "renderer": "optics-raytracer",
+      "output_format": "canvas",
+      "capabilities": ["interactive"]
+    },
+    "lens-ray-trace": {
+      "id": "lens-ray-trace",
+      "name": "Lens Ray Tracing",
+      "description": "Interactive ray tracing through lenses",
+      "category": "interactive",
+      "renderer": "optics-simulator",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated"]
+    },
+    "wave-interference": {
+      "id": "wave-interference",
+      "name": "Wave Interference",
+      "description": "Animated wave interference patterns",
+      "category": "simulation",
+      "renderer": "wave-simulator",
+      "output_format": "webgl",
+      "capabilities": ["animated", "interactive", "3d"]
+    },
+    "energy-bar": {
+      "id": "energy-bar",
+      "name": "Energy Bar Chart",
+      "description": "Bar chart showing energy transformations",
+      "category": "chart",
+      "renderer": "energy-chart",
+      "output_format": "canvas",
+      "capabilities": ["animated", "interactive"]
+    },
+    "field-line-3d": {
+      "id": "field-line-3d",
+      "name": "3D Field Lines",
+      "description": "Three-dimensional visualization of field lines",
+      "category": "3d-model",
+      "renderer": "field-3d",
+      "output_format": "webgl",
+      "capabilities": ["3d", "interactive", "rotatable"]
+    },
+    "particle-simulation": {
+      "id": "particle-simulation",
+      "name": "Particle Simulation",
+      "description": "Physics simulation of particle systems",
+      "category": "simulation",
+      "renderer": "particle-engine",
+      "output_format": "webgl",
+      "capabilities": ["animated", "interactive", "real-time", "3d"]
+    }
+  },
+  "service_extensions": {
+    "concept_service": {
+      "class_path": "visualverse.engine.content_verticals.physics_verse.PhysicsVerseConceptService",
+      "module": "physics_verse.services",
+      "priority": 85,
+      "config": {
+        "simulation_support": true,
+        "equation_motion_linking": true
+      }
+    },
+    "animation_service": {
+      "class_path": "visualverse.engine.content_verticals.physics_verse.PhysicsVerseAnimationService",
+      "module": "physics_verse.services",
+      "priority": 85,
+      "config": {
+        "physics_engine": "matter-js",
+        "collision_detection": true
+      }
+    },
+    "visual_service": {
+      "class_path": "visualverse.engine.content_verticals.physics_verse.PhysicsVerseVisualService",
+      "module": "physics_verse.services",
+      "priority": 85,
+      "config": {
+        "vector_renderer": "arrow-based",
+        "field_visualizer": "webgl-enabled"
+      }
+    }
+  },
+  "visualization_templates": {
+    "default_style": "physics-simulation",
+    "color_schemes": [
+      {
+        "id": "physics-light",
+        "name": "Physics Light",
+        "description": "Light theme for physics simulations",
+        "colors": {
+          "primary": "#dc2626",
+          "secondary": "#ef4444",
+          "accent": "#3b82f6",
+          "background": "#ffffff",
+          "text": "#1e293b",
+          "success": "#22c55e",
+          "warning": "#f59e0b",
+          "error": "#b91c1c"
+        },
+        "theme": "light"
+      },
+      {
+        "id": "physics-dark",
+        "name": "Physics Dark",
+        "description": "Dark theme for physics simulations",
+        "colors": {
+          "primary": "#f87171",
+          "secondary": "#fca5a5",
+          "accent": "#60a5fa",
+          "background": "#0f172a",
+          "text": "#e2e8f0",
+          "success": "#4ade80",
+          "warning": "#fcd34d",
+          "error": "#f87171"
+        },
+        "theme": "dark"
+      }
+    ],
+    "animation_presets": {
+      "projectile": {
+        "id": "projectile",
+        "name": "Projectile Motion",
+        "description": "Standard projectile motion simulation",
+        "duration_ms": 5000,
+        "easing": "ease-in-out",
+        "physics_params": {
+          "gravity": 9.8,
+          "air_resistance": 0.01
+        }
+      },
+      "wave-propagation": {
+        "id": "wave-propagation",
+        "name": "Wave Propagation",
+        "description": "Wave motion and propagation",
+        "duration_ms": 4000,
+        "easing": "linear",
+        "physics_params": {
+          "wave_speed": 1.0,
+          "amplitude": 1.0
+        }
+      },
+      "oscillation": {
+        "id": "oscillation",
+        "name": "Oscillation",
+        "description": "Simple harmonic motion visualization",
+        "duration_ms": 3000,
+        "easing": "linear"
+      }
+    },
+    "layout_patterns": [
+      {
+        "id": "simulation-full",
+        "name": "Full Simulation",
+        "description": "Full-screen simulation layout",
+        "template": "physics-simulation",
+        "aspect_ratio": "16:9"
+      },
+      {
+        "id": "simulation-split",
+        "name": "Split Simulation",
+        "description": "Split view with controls and visualization",
+        "template": "physics-split",
+        "aspect_ratio": "16:9"
+      },
+      {
+        "id": "diagram-overlay",
+        "name": "Diagram with Overlay",
+        "description": "Diagram with real-time data overlay",
+        "template": "physics-overlay",
+        "aspect_ratio": "4:3"
+      }
+    ]
+  },
+  "curriculum_templates": [
+    {
+      "id": "standard-physics",
+      "name": "Standard Physics Curriculum",
+      "description": "Traditional physics curriculum structure",
+      "structure": [
+        {"id": "phenomenon", "name": "Phenomenon Introduction", "type": "lesson", "duration_hours": 1},
+        {"id": "concept", "name": "Core Concept", "type": "lesson", "duration_hours": 2},
+        {"id": "demo", "name": "Demo/Simulation", "type": "lesson", "duration_hours": 1},
+        {"id": "calculation", "name": "Calculation Practice", "type": "lesson", "duration_hours": 2},
+        {"id": "lab", "name": "Virtual Lab", "type": "project", "duration_hours": 2}
+      ],
+      "assessment_strategy": "problem-based"
+    },
+    {
+      "id": "simulation-heavy",
+      "name": "Simulation-Heavy Curriculum",
+      "description": "Curriculum emphasizing physics simulations",
+      "structure": [
+        {"id": "explore", "name": "Explore Simulation", "type": "lesson", "duration_hours": 1},
+        {"id": "observe", "name": "Observe Patterns", "type": "lesson", "duration_hours": 1},
+        {"id": "hypothesize", "name": "Form Hypothesis", "type": "lesson", "duration_hours": 1},
+        {"id": "test", "name": "Test with Simulation", "type": "lesson", "duration_hours": 2},
+        {"id": "conclude", "name": "Draw Conclusions", "type": "lesson", "duration_hours": 1}
+      ],
+      "assessment_strategy": "inquiry-based"
+    }
+  ],
+  "metadata": {
+    "author": "VisualVerse Platform",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-12-26T00:00:00Z",
+    "tags": ["physics", "mechanics", "optics", "electromagnetism", "thermodynamics", "simulation"],
+    "license": "proprietary"
+  }
+}

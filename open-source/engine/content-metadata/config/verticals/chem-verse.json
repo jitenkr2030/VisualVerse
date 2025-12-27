@@ -1,0 +1,590 @@
+{
+  "id": "chem-verse",
+  "name": "ChemVerse",
+  "code": "ChemVerse",
+  "version": "1.0.0",
+  "description": "Chemistry visualization platform covering molecular structures, bonding, orbital models, and reaction pathway animations",
+  "engine_version": "1.0.0",
+  "domains": [
+    {
+      "id": "atomic-structure",
+      "name": "Atomic Structure",
+      "description": "Understanding atoms, subatomic particles, and electron configurations",
+      "topics": [
+        {
+          "id": "atoms-elements",
+          "name": "Atoms and Elements",
+          "description": "Basic structure of atoms and periodic elements",
+          "concepts": [
+            {
+              "id": "atomic-structure",
+              "name": "Atomic Structure",
+              "description": "Protons, neutrons, and electrons",
+              "visualization_preferences": ["atom-model", "particle-nucleus"],
+              "difficulty_score": 0.3
+            },
+            {
+              "id": "electron-config",
+              "name": "Electron Configuration",
+              "description": "Arrangement of electrons in orbitals",
+              "visualization_preferences": ["orbital-diagram", "shell-animation"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "periodic-trends",
+              "name": "Periodic Trends",
+              "description": "Trends in atomic properties across periods",
+              "visualization_preferences": ["periodic-table", "trend-graph"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient"]
+        },
+        {
+          "id": "isotopes-radioactivity",
+          "name": "Isotopes and Radioactivity",
+          "description": "Atomic variations and nuclear processes",
+          "concepts": [
+            {
+              "id": "isotopes",
+              "name": "Isotopes",
+              "description": "Atoms with same protons, different neutrons",
+              "visualization_preferences": ["atom-compare", "mass-variation"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "radioactive-decay",
+              "name": "Radioactive Decay",
+              "description": "Nuclear decay processes and half-life",
+              "visualization_preferences": ["decay-animation", "half-life-graph"],
+              "difficulty_score": 0.75
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["9", "10", "11", "12"],
+        "education_level": ["high-school"]
+      }
+    },
+    {
+      "id": "bonding",
+      "name": "Chemical Bonding",
+      "description": "Types of chemical bonds and molecular geometry",
+      "topics": [
+        {
+          "id": "ionic-bonding",
+          "name": "Ionic Bonding",
+          "description": "Transfer of electrons between atoms",
+          "concepts": [
+            {
+              "id": "electron-transfer",
+              "name": "Electron Transfer",
+              "description": "How atoms gain or lose electrons",
+              "visualization_preferences": ["electron-transfer", "ion-formation"],
+              "difficulty_score": 0.45
+            },
+            {
+              "id": "ionic-lattice",
+              "name": "Ionic Lattice",
+              "description": "Crystal structure of ionic compounds",
+              "visualization_preferences": ["lattice-structure", "crystal-3d"],
+              "difficulty_score": 0.55
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient"]
+        },
+        {
+          "id": "covalent-bonding",
+          "name": "Covalent Bonding",
+          "description": "Sharing of electrons between atoms",
+          "concepts": [
+            {
+              "id": "bond-formation",
+              "name": "Bond Formation",
+              "description": "How atoms share electrons",
+              "visualization_preferences": ["electron-sharing", "bond-formation"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "lewis-structures",
+              "name": "Lewis Structures",
+              "description": "Representing covalent bonds with dots",
+              "visualization_preferences": ["lewis-structure", "bond-diagram"],
+              "difficulty_score": 0.6
+            },
+            {
+              "id": "molecular-geometry",
+              "name": "Molecular Geometry",
+              "description": "3D shapes of molecules",
+              "visualization_preferences": ["molecule-3d", "vsepr-model"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "intermolecular",
+          "name": "Intermolecular Forces",
+          "description": "Forces between molecules",
+          "concepts": [
+            {
+              "id": "dipole-forces",
+              "name": "Dipole-Dipole Forces",
+              "description": "Attraction between polar molecules",
+              "visualization_preferences": ["dipole-visualization", "molecule-alignment"],
+              "difficulty_score": 0.65
+            },
+            {
+              "id": "hydrogen-bonding",
+              "name": "Hydrogen Bonding",
+              "description": "Special strong dipole interactions",
+              "visualization_preferences": ["hydrogen-bond", "molecular-network"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "london-forces",
+              "name": "London Dispersion Forces",
+              "description": "Temporary dipoles in all molecules",
+              "visualization_preferences": ["electron-cloud", "instantaneous-dipole"],
+              "difficulty_score": 0.65
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["10", "11", "12"],
+        "education_level": ["high-school"]
+      }
+    },
+    {
+      "id": "molecular-visualization",
+      "name": "Molecular Visualization",
+      "description": "3D representation of molecules and their properties",
+      "topics": [
+        {
+          "id": "molecular-structures",
+          "name": "Molecular Structures",
+          "description": "Understanding molecular architectures",
+          "concepts": [
+            {
+              "id": "simple-molecules",
+              "name": "Simple Molecules",
+              "description": "Basic molecular structures",
+              "visualization_preferences": ["ball-stick", "space-fill"],
+              "difficulty_score": 0.35
+            },
+            {
+              "id": "complex-molecules",
+              "name": "Complex Molecules",
+              "description": "Large organic and biochemical molecules",
+              "visualization_preferences": ["protein-structure", "dna-visualization"],
+              "difficulty_score": 0.8
+            }
+          ],
+          "difficulty_levels": ["developing", "advanced"]
+        },
+        {
+          "id": "stereochemistry",
+          "name": "Stereochemistry",
+          "description": "Spatial arrangement of atoms in molecules",
+          "concepts": [
+            {
+              "id": "chirality",
+              "name": "Chirality",
+              "description": "Handedness in molecules",
+              "visualization_preferences": ["chiral-compare", "handedness"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "isomerism",
+              "name": "Isomerism",
+              "description": "Same formula, different structures",
+              "visualization_preferences": ["isomer-compare", "structure-3d"],
+              "difficulty_score": 0.75
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "reactions",
+      "name": "Chemical Reactions",
+      "description": "Understanding and visualizing chemical processes",
+      "topics": [
+        {
+          "id": "reaction-types",
+          "name": "Types of Reactions",
+          "description": "Different categories of chemical reactions",
+          "concepts": [
+            {
+              "id": "synthesis",
+              "name": "Synthesis Reactions",
+              "description": "Combining elements into compounds",
+              "visualization_preferences": ["reaction-animation", "combining-atoms"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "decomposition",
+              "name": "Decomposition Reactions",
+              "description": "Breaking compounds into elements",
+              "visualization_preferences": ["breakdown-animation", "reaction-reversal"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "redox",
+              "name": "Redox Reactions",
+              "description": "Electron transfer in reactions",
+              "visualization_preferences": ["electron-transfer", "oxidation-state"],
+              "difficulty_score": 0.75
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient", "advanced"]
+        },
+        {
+          "id": "reaction-mechanisms",
+          "name": "Reaction Mechanisms",
+          "description": "Step-by-step processes in reactions",
+          "concepts": [
+            {
+              "id": "mechanism-steps",
+              "name": "Mechanism Steps",
+              "description": "Elementary steps in reaction pathways",
+              "visualization_preferences": ["step-animation", "mechanism-flow"],
+              "difficulty_score": 0.8
+            },
+            {
+              "id": "reaction-energy",
+              "name": "Reaction Energy",
+              "description": "Energy changes in reactions",
+              "visualization_preferences": ["energy-profile", "activation-energy"],
+              "difficulty_score": 0.75
+            },
+            {
+              "id": "catalysis",
+              "name": "Catalysis",
+              "description": "Speeding up reactions with catalysts",
+              "visualization_preferences": ["catalyst-animation", "pathway-compare"],
+              "difficulty_score": 0.8
+            }
+          ],
+          "difficulty_levels": ["advanced", "expert"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "orbital-theory",
+      "name": "Orbital Theory",
+      "description": "Quantum mechanical model of atomic and molecular orbitals",
+      "topics": [
+        {
+          "id": "atomic-orbitals",
+          "name": "Atomic Orbitals",
+          "description": "s, p, d, and f orbitals",
+          "concepts": [
+            {
+              "id": "orbital-shapes",
+              "name": "Orbital Shapes",
+              "description": "3D shapes of different orbitals",
+              "visualization_preferences": ["orbital-3d", "shape-compare"],
+              "difficulty_score": 0.75
+            },
+            {
+              "id": "orbital-energy",
+              "name": "Orbital Energy Levels",
+              "description": "Energy ordering of orbitals",
+              "visualization_preferences": ["energy-diagram", "aufbau-animation"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        },
+        {
+          "id": "molecular-orbitals",
+          "name": "Molecular Orbitals",
+          "description": "Orbitals spanning multiple atoms",
+          "concepts": [
+            {
+              "id": "bonding-mos",
+              "name": "Bonding Orbitals",
+              "description": "Molecular orbitals that stabilize bonds",
+              "visualization_preferences": ["mo-diagram", "orbital-overlap"],
+              "difficulty_score": 0.85
+            },
+            {
+              "id": "antibonding-mos",
+              "name": "Antibonding Orbitals",
+              "description": "Molecular orbitals that destabilize bonds",
+              "visualization_preferences": ["mo-diagram", "node-visualization"],
+              "difficulty_score": 0.9
+            }
+          ],
+          "difficulty_levels": ["expert"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    }
+  ],
+  "visualization_types": {
+    "atom-model": {
+      "id": "atom-model",
+      "name": "Atomic Model",
+      "description": "Interactive 3D model of an atom",
+      "category": "3d-model",
+      "renderer": "molecular-3d",
+      "output_format": "webgl",
+      "capabilities": ["3d", "interactive", "rotatable"]
+    },
+    "molecule-3d": {
+      "id": "molecule-3d",
+      "name": "3D Molecule Viewer",
+      "description": "Interactive 3D molecular visualization",
+      "category": "3d-model",
+      "renderer": "molecular-3d",
+      "output_format": "webgl",
+      "capabilities": ["3d", "interactive", "rotatable", "zoomable"]
+    },
+    "ball-stick": {
+      "id": "ball-stick",
+      "name": "Ball-and-Stick Model",
+      "description": "Molecular representation with balls and sticks",
+      "category": "3d-model",
+      "renderer": "molecular-3d",
+      "output_format": "webgl",
+      "capabilities": ["3d", "interactive", "rotatable"]
+    },
+    "space-fill": {
+      "id": "space-fill",
+      "name": "Space-Filling Model",
+      "description": "CPK space-filling molecular representation",
+      "category": "3d-model",
+      "renderer": "molecular-3d",
+      "output_format": "webgl",
+      "capabilities": ["3d", "interactive", "rotatable"]
+    },
+    "orbital-3d": {
+      "id": "orbital-3d",
+      "name": "3D Orbital Visualization",
+      "description": "3D probability density visualization for orbitals",
+      "category": "3d-model",
+      "renderer": "orbital-visualizer",
+      "output_format": "webgl",
+      "capabilities": ["3d", "interactive", "rotatable", "transparent"]
+    },
+    "orbital-diagram": {
+      "id": "orbital-diagram",
+      "name": "Orbital Diagram",
+      "description": "2D representation of orbital filling",
+      "category": "diagram",
+      "renderer": "orbital-diagram",
+      "output_format": "svg",
+      "capabilities": ["interactive", "accessible"]
+    },
+    "reaction-animation": {
+      "id": "reaction-animation",
+      "name": "Reaction Animation",
+      "description": "Animated visualization of chemical reactions",
+      "category": "animation",
+      "renderer": "reaction-animator",
+      "output_format": "webgl",
+      "capabilities": ["animated", "interactive"]
+    },
+    "mechanism-flow": {
+      "id": "mechanism-flow",
+      "name": "Mechanism Flow Diagram",
+      "description": "Flow diagram showing reaction mechanism steps",
+      "category": "flowchart",
+      "renderer": "mechanism-diagram",
+      "output_format": "svg",
+      "capabilities": ["interactive"]
+    },
+    "energy-profile": {
+      "id": "energy-profile",
+      "name": "Reaction Energy Profile",
+      "description": "Energy diagram showing reaction progress",
+      "category": "chart",
+      "renderer": "energy-profile-chart",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated"]
+    },
+    "vsepr-model": {
+      "id": "vsepr-model",
+      "name": "VSEPR Model",
+      "description": "Molecular geometry based on VSEPR theory",
+      "category": "3d-model",
+      "renderer": "molecular-3d",
+      "output_format": "webgl",
+      "capabilities": ["3d", "interactive", "rotatable"]
+    },
+    "lewis-structure": {
+      "id": "lewis-structure",
+      "name": "Lewis Structure",
+      "description": "Lewis dot structure representation",
+      "category": "diagram",
+      "renderer": "lewis-structure",
+      "output_format": "svg",
+      "capabilities": ["interactive"]
+    },
+    "crystal-3d": {
+      "id": "crystal-3d",
+      "name": "3D Crystal Lattice",
+      "description": "Interactive 3D crystal structure visualization",
+      "category": "3d-model",
+      "renderer": "crystal-visualizer",
+      "output_format": "webgl",
+      "capabilities": ["3d", "interactive", "rotatable"]
+    }
+  },
+  "service_extensions": {
+    "concept_service": {
+      "class_path": "visualverse.engine.content_verticals.chem_verse.ChemVerseConceptService",
+      "module": "chem_verse.services",
+      "priority": 85,
+      "config": {
+        "reaction_support": true,
+        "orbital_visualization": true
+      }
+    },
+    "visual_service": {
+      "class_path": "visualverse.engine.content_verticals.chem_verse.ChemVerseVisualService",
+      "module": "chem_verse.services",
+      "priority": 85,
+      "config": {
+        "molecular_renderer": "webgl-3d",
+        "orbital_renderer": "probability-density"
+      }
+    },
+    "animation_service": {
+      "class_path": "visualverse.engine.content_verticals.chem_verse.ChemVerseAnimationService",
+      "module": "chem_verse.services",
+      "priority": 85,
+      "config": {
+        "reaction_animation": true,
+        "bond_formation": true
+      }
+    }
+  },
+  "visualization_templates": {
+    "default_style": "molecular-clean",
+    "color_schemes": [
+      {
+        "id": "cpk-standard",
+        "name": "CPK Standard",
+        "description": "Standard CPK coloring for atoms",
+        "colors": {
+          "primary": "#3498db",
+          "secondary": "#2ecc71",
+          "accent": "#e74c3c",
+          "background": "#ffffff",
+          "text": "#2c3e50",
+          "success": "#27ae60",
+          "warning": "#f39c12",
+          "error": "#c0392b"
+        },
+        "theme": "light"
+      },
+      {
+        "id": "cpk-dark",
+        "name": "CPK Dark",
+        "description": "Dark theme for molecular visualization",
+        "colors": {
+          "primary": "#5dade2",
+          "secondary": "#58d68d",
+          "accent": "#ec7063",
+          "background": "#1a1a2e",
+          "text": "#ecf0f1",
+          "success": "#58d68d",
+          "warning": "#f4d03f",
+          "error": "#e74c3c"
+        },
+        "theme": "dark"
+      }
+    ],
+    "animation_presets": {
+      "rotation": {
+        "id": "rotation",
+        "name": "Molecule Rotation",
+        "description": "Continuous rotation of molecule",
+        "duration_ms": 10000,
+        "easing": "linear"
+      },
+      "bond-formation": {
+        "id": "bond-formation",
+        "name": "Bond Formation",
+        "description": "Animation of atoms forming bonds",
+        "duration_ms": 3000,
+        "easing": "ease-in-out"
+      },
+      "reaction-step": {
+        "id": "reaction-step",
+        "name": "Reaction Step",
+        "description": "Step-by-step reaction animation",
+        "duration_ms": 5000,
+        "easing": "ease-in-out"
+      }
+    },
+    "layout_patterns": [
+      {
+        "id": "molecule-viewer",
+        "name": "Molecule Viewer",
+        "description": "Full molecule viewer layout",
+        "template": "molecule-viewer",
+        "aspect_ratio": "1:1"
+      },
+      {
+        "id": "reaction-panel",
+        "name": "Reaction Panel",
+        "description": "Layout for reaction visualization",
+        "template": "reaction-panel",
+        "aspect_ratio": "16:9"
+      }
+    ]
+  },
+  "curriculum_templates": [
+    {
+      "id": "standard-chemistry",
+      "name": "Standard Chemistry Curriculum",
+      "description": "Traditional chemistry curriculum structure",
+      "structure": [
+        {"id": "intro", "name": "Introduction", "type": "lesson", "duration_hours": 1},
+        {"id": "model", "name": "Model Introduction", "type": "lesson", "duration_hours": 2},
+        {"id": "visual", "name": "Visual Demonstration", "type": "lesson", "duration_hours": 1},
+        {"id": "practice", "name": "Practice", "type": "lesson", "duration_hours": 2}
+      ],
+      "assessment_strategy": "mixed"
+    },
+    {
+      "id": "visual-heavy",
+      "name": "Visual-Heavy Chemistry",
+      "description": "Curriculum emphasizing molecular visualization",
+      "structure": [
+        {"id": "explore", "name": "Explore Structure", "type": "lesson", "duration_hours": 1},
+        {"id": "interact", "name": "Interact with Model", "type": "lesson", "duration_hours": 2},
+        {"id": "predict", "name": "Predict Properties", "type": "lesson", "duration_hours": 1},
+        {"id": "verify", "name": "Verify with Data", "type": "lesson", "duration_hours": 2}
+      ],
+      "assessment_strategy": "model-based"
+    }
+  ],
+  "metadata": {
+    "author": "VisualVerse Platform",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-12-26T00:00:00Z",
+    "tags": ["chemistry", "molecules", "bonding", "reactions", "orbitals", "visualization"],
+    "license": "proprietary"
+  }
+}

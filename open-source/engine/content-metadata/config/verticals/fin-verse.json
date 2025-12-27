@@ -1,0 +1,582 @@
+{
+  "id": "fin-verse",
+  "name": "FinVerse",
+  "code": "FinVerse",
+  "version": "1.0.0",
+  "description": "Financial visualization platform covering financial models, risk analysis, and time-based scenario planning",
+  "engine_version": "1.0.0",
+  "domains": [
+    {
+      "id": "financial-fundamentals",
+      "name": "Financial Fundamentals",
+      "description": "Basic financial concepts and terminology",
+      "topics": [
+        {
+          "id": "time-value-money",
+          "name": "Time Value of Money",
+          "description": "Understanding present and future value",
+          "concepts": [
+            {
+              "id": "present-value",
+              "name": "Present Value",
+              "description": "Current value of future cash flows",
+              "visualization_preferences": ["timeline-cashflow", "pv-curve"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "future-value",
+              "name": "Future Value",
+              "description": "Projected value of current investments",
+              "visualization_preferences": ["fv-growth", "compound-animation"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "discounting",
+              "name": "Discounting",
+              "description": "Reducing future values to present",
+              "visualization_preferences": ["discounting-flow", "rate-impact"],
+              "difficulty_score": 0.55
+            }
+          ],
+          "difficulty_levels": ["proficient"]
+        },
+        {
+          "id": "interest-rates",
+          "name": "Interest Rates",
+          "description": "Understanding different interest rate types",
+          "concepts": [
+            {
+              "id": "simple-interest",
+              "name": "Simple Interest",
+              "description": "Interest calculated on principal only",
+              "visualization_preferences": ["interest-chart", "linear-growth"],
+              "difficulty_score": 0.4
+            },
+            {
+              "id": "compound-interest",
+              "name": "Compound Interest",
+              "description": "Interest on principal and accumulated interest",
+              "visualization_preferences": ["compound-growth", "exponential-curve"],
+              "difficulty_score": 0.55
+            },
+            {
+              "id": "effective-rate",
+              "name": "Effective vs Nominal Rate",
+              "description": "Understanding APR and APY",
+              "visualization_preferences": ["rate-comparison", "frequency-impact"],
+              "difficulty_score": 0.6
+            }
+          ],
+          "difficulty_levels": ["developing", "proficient"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["10", "11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    },
+    {
+      "id": "investments",
+      "name": "Investment Fundamentals",
+      "description": "Understanding investment vehicles and strategies",
+      "topics": [
+        {
+          "id": "stocks",
+          "name": "Stocks and Equities",
+          "description": "Ownership in companies",
+          "concepts": [
+            {
+              "id": "stock-basics",
+              "name": "Stock Fundamentals",
+              "description": "What stocks represent and how they're valued",
+              "visualization_preferences": ["stock-chart", "ownership-share"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "stock-indices",
+              "name": "Stock Indices",
+              "description": "Market benchmarks and indices",
+              "visualization_preferences": ["index-chart", "market-overview"],
+              "difficulty_score": 0.55
+            }
+          ],
+          "difficulty_levels": ["proficient"]
+        },
+        {
+          "id": "bonds",
+          "name": "Bonds and Fixed Income",
+          "description": "Debt securities and income investing",
+          "concepts": [
+            {
+              "id": "bond-basics",
+              "name": "Bond Fundamentals",
+              "description": "How bonds work as loans to issuers",
+              "visualization_preferences": ["bond-timeline", "coupon-flow"],
+              "difficulty_score": 0.55
+            },
+            {
+              "id": "yield-curve",
+              "name": "Yield Curve",
+              "description": "Interest rates across maturities",
+              "visualization_preferences": ["yield-curve", "curve-shapes"],
+              "difficulty_score": 0.7
+            }
+          ],
+          "difficulty_levels": ["proficient", "advanced"]
+        },
+        {
+          "id": "diversification",
+          "name": "Diversification",
+          "description": "Spreading risk across investments",
+          "concepts": [
+            {
+              "id": "portfolio-risk",
+              "name": "Portfolio Risk",
+              "description": "How individual risks combine",
+              "visualization_preferences": ["risk-scatter", "correlation-plot"],
+              "difficulty_score": 0.75
+            },
+            {
+              "id": "efficient-frontier",
+              "name": "Efficient Frontier",
+              "description": "Optimal risk-return trade-offs",
+              "visualization_preferences": ["frontier-curve", "portfolio-dot"],
+              "difficulty_score": 0.85
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["11", "12"],
+        "education_level": ["high-school", "undergraduate", "professional"]
+      }
+    },
+    {
+      "id": "risk-analysis",
+      "name": "Risk Analysis",
+      "description": "Understanding and measuring financial risk",
+      "topics": [
+        {
+          "id": "risk-metrics",
+          "name": "Risk Metrics",
+          "description": "Common measures of financial risk",
+          "concepts": [
+            {
+              "id": "variance",
+              "name": "Variance and Volatility",
+              "description": "Measuring return dispersion",
+              "visualization_preferences": ["variance-distribution", "volatility-chart"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "value-at-risk",
+              "name": "Value at Risk (VaR)",
+              "description": "Maximum expected loss at a confidence level",
+              "visualization_preferences": ["var-distribution", "loss-region"],
+              "difficulty_score": 0.8
+            },
+            {
+              "id": "beta",
+              "name": "Beta",
+              "description": "Market risk relative to benchmark",
+              "visualization_preferences": ["beta-comparison", "market-correlation"],
+              "difficulty_score": 0.75
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        },
+        {
+          "id": "risk-visualization",
+          "name": "Risk Visualization",
+          "description": "Visualizing risk in financial contexts",
+          "concepts": [
+            {
+              "id": "scenario-analysis",
+              "name": "Scenario Analysis",
+              "description": "Analyzing outcomes under different scenarios",
+              "visualization_preferences": ["scenario-chart", "outcome-tree"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "stress-testing",
+              "name": "Stress Testing",
+              "description": "Testing portfolios under extreme conditions",
+              "visualization_preferences": ["stress-scenario", "impact-chart"],
+              "difficulty_score": 0.85
+            }
+          ],
+          "difficulty_levels": ["advanced", "expert"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["12"],
+        "education_level": ["undergraduate", "professional"]
+      }
+    },
+    {
+      "id": "financial-modeling",
+      "name": "Financial Modeling",
+      "description": "Building and using financial models",
+      "topics": [
+        {
+          "id": "valuation",
+          "name": "Valuation Methods",
+          "description": "Determining the value of assets",
+          "concepts": [
+            {
+              "id": "dcf",
+              "name": "Discounted Cash Flow",
+              "description": "Valuing based on future cash flows",
+              "visualization_preferences": ["dcf-timeline", "cashflow-projection"],
+              "difficulty_score": 0.8
+            },
+            {
+              "id": "comparable-analysis",
+              "name": "Comparable Company Analysis",
+              "description": "Valuing based on similar companies",
+              "visualization_preferences": ["comps-table", "multiple-chart"],
+              "difficulty_score": 0.75
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        },
+        {
+          "id": "forecasting",
+          "name": "Financial Forecasting",
+          "description": "Projecting future financial performance",
+          "concepts": [
+            {
+              "id": "revenue-forecast",
+              "name": "Revenue Forecasting",
+              "description": "Projecting future revenue streams",
+              "visualization_preferences": ["revenue-trend", "projection-uncertainty"],
+              "difficulty_score": 0.7
+            },
+            {
+              "id": "cashflow-projection",
+              "name": "Cash Flow Projection",
+              "description": "Projecting cash inflows and outflows",
+              "visualization_preferences": ["cashflow-chart", "burn-rate"],
+              "difficulty_score": 0.75
+            }
+          ],
+          "difficulty_levels": ["advanced"]
+        }
+      ],
+      "target_audience": {
+        "education_level": ["undergraduate", "graduate", "professional"]
+      }
+    },
+    {
+      "id": "markets-dynamics",
+      "name": "Market Dynamics",
+      "description": "Understanding how markets work",
+      "topics": [
+        {
+          "id": "supply-demand",
+          "name": "Supply and Demand",
+          "description": "Market equilibrium and price determination",
+          "concepts": [
+            {
+              "id": "supply-curve",
+              "name": "Supply Curve",
+              "description": "Relationship between price and quantity supplied",
+              "visualization_preferences": ["supply-demand-graph", "equilibrium-shift"],
+              "difficulty_score": 0.5
+            },
+            {
+              "id": "demand-curve",
+              "name": "Demand Curve",
+              "description": "Relationship between price and quantity demanded",
+              "visualization_preferences": ["demand-curve", "elasticity-impact"],
+              "difficulty_score": 0.5
+            }
+          ],
+          "difficulty_levels": ["proficient"]
+        },
+        {
+          "id": "market-cycles",
+          "name": "Market Cycles",
+          "description": "Understanding bull and bear markets",
+          "concepts": [
+            {
+              "id": "bull-market",
+              "name": "Bull Market",
+              "description": "Rising market conditions",
+              "visualization_preferences": ["trend-up", "market-momentum"],
+              "difficulty_score": 0.55
+            },
+            {
+              "id": "bear-market",
+              "name": "Bear Market",
+              "description": "Declining market conditions",
+              "visualization_preferences": ["trend-down", "market-sentiment"],
+              "difficulty_score": 0.55
+            }
+          ],
+          "difficulty_levels": ["proficient"]
+        }
+      ],
+      "target_audience": {
+        "grade_levels": ["11", "12"],
+        "education_level": ["high-school", "undergraduate"]
+      }
+    }
+  ],
+  "visualization_types": {
+    "timeline-cashflow": {
+      "id": "timeline-cashflow",
+      "name": "Cash Flow Timeline",
+      "description": "Timeline visualization of cash flows",
+      "category": "chart",
+      "renderer": "cashflow-timeline",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated"]
+    },
+    "compound-growth": {
+      "id": "compound-growth",
+      "name": "Compound Growth Chart",
+      "description": "Visualization of compound growth over time",
+      "category": "chart",
+      "renderer": "growth-chart",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated"]
+    },
+    "stock-chart": {
+      "id": "stock-chart",
+      "name": "Stock Price Chart",
+      "description": "Time series chart for stock prices",
+      "category": "chart",
+      "renderer": "stock-chart",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "responsive"]
+    },
+    "yield-curve": {
+      "id": "yield-curve",
+      "name": "Yield Curve Chart",
+      "description": "Visualization of the yield curve",
+      "category": "chart",
+      "renderer": "yield-curve",
+      "output_format": "canvas",
+      "capabilities": ["interactive"]
+    },
+    "risk-scatter": {
+      "id": "risk-scatter",
+      "name": "Risk-Return Scatter Plot",
+      "description": "Scatter plot of risk vs return",
+      "category": "chart",
+      "renderer": "risk-return-plot",
+      "output_format": "canvas",
+      "capabilities": ["interactive"]
+    },
+    "frontier-curve": {
+      "id": "frontier-curve",
+      "name": "Efficient Frontier",
+      "description": "Portfolio efficient frontier visualization",
+      "category": "chart",
+      "renderer": "efficient-frontier",
+      "output_format": "canvas",
+      "capabilities": ["interactive"]
+    },
+    "dcf-timeline": {
+      "id": "dcf-timeline",
+      "name": "DCF Timeline",
+      "description": "Discounted cash flow timeline visualization",
+      "category": "chart",
+      "renderer": "dcf-visualizer",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated"]
+    },
+    "scenario-chart": {
+      "id": "scenario-chart",
+      "name": "Scenario Analysis Chart",
+      "description": "Chart showing outcomes under different scenarios",
+      "category": "chart",
+      "renderer": "scenario-chart",
+      "output_format": "canvas",
+      "capabilities": ["interactive"]
+    },
+    "var-distribution": {
+      "id": "var-distribution",
+      "name": "VaR Distribution",
+      "description": "Value at risk visualization on return distribution",
+      "category": "chart",
+      "renderer": "var-visualizer",
+      "output_format": "canvas",
+      "capabilities": ["interactive"]
+    },
+    "cashflow-chart": {
+      "id": "cashflow-chart",
+      "name": "Cash Flow Chart",
+      "description": "Inflow and outflow visualization",
+      "category": "chart",
+      "renderer": "cashflow-chart",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated"]
+    },
+    "supply-demand-graph": {
+      "id": "supply-demand-graph",
+      "name": "Supply and Demand Graph",
+      "description": "Standard supply and demand curve diagram",
+      "category": "chart",
+      "renderer": "supply-demand",
+      "output_format": "canvas",
+      "capabilities": ["interactive", "animated"]
+    },
+    "correlation-plot": {
+      "id": "correlation-plot",
+      "name": "Correlation Plot",
+      "description": "Heatmap or scatter plot of correlations",
+      "category": "chart",
+      "renderer": "correlation-matrix",
+      "output_format": "canvas",
+      "capabilities": ["interactive"]
+    }
+  },
+  "service_extensions": {
+    "concept_service": {
+      "class_path": "visualverse.engine.content_verticals.fin_verse.FinVerseConceptService",
+      "module": "fin_verse.services",
+      "priority": 85,
+      "config": {
+        "financial_metrics": true,
+        "model_support": true
+      }
+    },
+    "visual_service": {
+      "class_path": "visualverse.engine.content_verticals.fin_verse.FinVerseVisualService",
+      "module": "fin_verse.services",
+      "priority": 85,
+      "config": {
+        "chart_renderer": "time-series",
+        "risk_visualizer": "interactive"
+      }
+    },
+    "animation_service": {
+      "class_path": "visualverse.engine.content_verticals.fin_verse.FinVerseAnimationService",
+      "module": "fin_verse.services",
+      "priority": 85,
+      "config": {
+        "scenario_animation": true,
+        "projection_transitions": true
+      }
+    }
+  },
+  "visualization_templates": {
+    "default_style": "financial-clean",
+    "color_schemes": [
+      {
+        "id": "financial-light",
+        "name": "Financial Light",
+        "description": "Light theme for financial charts",
+        "colors": {
+          "primary": "#0d6efd",
+          "secondary": "#198754",
+          "accent": "#dc3545",
+          "background": "#ffffff",
+          "text": "#212529",
+          "success": "#198754",
+          "warning": "#ffc107",
+          "error": "#dc3545"
+        },
+        "theme": "light"
+      },
+      {
+        "id": "financial-dark",
+        "name": "Financial Dark",
+        "description": "Dark theme for financial charts",
+        "colors": {
+          "primary": "#4dabf7",
+          "secondary": "#51cf66",
+          "accent": "#ff6b6b",
+          "background": "#1a1a2e",
+          "text": "#e9ecef",
+          "success": "#51cf66",
+          "warning": "#ffd43b",
+          "error": "#ff6b6b"
+        },
+        "theme": "dark"
+      }
+    ],
+    "animation_presets": {
+      "growth-reveal": {
+        "id": "growth-reveal",
+        "name": "Growth Reveal",
+        "description": "Animated reveal of growth over time",
+        "duration_ms": 4000,
+        "easing": "ease-in-out"
+      },
+      "projection-transition": {
+        "id": "projection-transition",
+        "name": "Projection Transition",
+        "description": "Animation transitioning to projection",
+        "duration_ms": 3000,
+        "easing": "ease-in-out"
+      },
+      "scenario-comparison": {
+        "id": "scenario-comparison",
+        "name": "Scenario Comparison",
+        "description": "Animated comparison of scenarios",
+        "duration_ms": 5000,
+        "easing": "ease-in-out"
+      }
+    },
+    "layout_patterns": [
+      {
+        "id": "chart-focused",
+        "name": "Chart Focused",
+        "description": "Layout with prominent chart area",
+        "template": "chart-focused",
+        "aspect_ratio": "16:9"
+      },
+      {
+        "id": "scenario-panel",
+        "name": "Scenario Panel",
+        "description": "Layout for scenario comparison",
+        "template": "scenario-panel",
+        "aspect_ratio": "16:9"
+      },
+      {
+        "id": "dashboard",
+        "name": "Financial Dashboard",
+        "description": "Multi-chart dashboard layout",
+        "template": "fin-dashboard",
+        "aspect_ratio": "16:9"
+      }
+    ]
+  },
+  "curriculum_templates": [
+    {
+      "id": "standard-finance",
+      "name": "Standard Finance Curriculum",
+      "description": "Traditional finance curriculum structure",
+      "structure": [
+        {"id": "concept", "name": "Concept Introduction", "type": "lesson", "duration_hours": 1},
+        {"id": "formula", "name": "Formula/Model", "type": "lesson", "duration_hours": 1},
+        {"id": "example", "name": "Example", "type": "lesson", "duration_hours": 1},
+        {"id": "practice", "name": "Practice", "type": "lesson", "duration_hours": 2}
+      ],
+      "assessment_strategy": "problem-based"
+    },
+    {
+      "id": "scenario-based",
+      "name": "Scenario-Based Finance",
+      "description": "Curriculum using real-world scenarios",
+      "structure": [
+        {"id": "scenario-intro", "name": "Introduce Scenario", "type": "lesson", "duration_hours": 1},
+        {"id": "data-analysis", "name": "Analyze Data", "type": "lesson", "duration_hours": 2},
+        {"id": "model-application", "name": "Apply Model", "type": "lesson", "duration_hours": 2},
+        {"id": "decision", "name": "Make Decision", "type": "lesson", "duration_hours": 1}
+      ],
+      "assessment_strategy": "scenario-based"
+    }
+  ],
+  "metadata": {
+    "author": "VisualVerse Platform",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-12-26T00:00:00Z",
+    "tags": ["finance", "investments", "risk", "modeling", "markets", "visualization"],
+    "license": "proprietary"
+  }
+}

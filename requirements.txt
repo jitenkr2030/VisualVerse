@@ -1,0 +1,29 @@
+# VisualVerse - One Engine, Many Verticals
+# Core dependencies
+
+# Manim Community
+-r manim-community/requirements.txt
+
+# Web framework for creator portal
+Flask==3.0.0
+Flask-CORS==4.0.0
+Jinja2==3.1.2
+
+# Async task queue for rendering
+celery==5.3.4
+redis==5.0.1
+
+# Data handling
+PyYAML==6.0.1
+pydantic==2.5.2
+networkx==3.2.1
+
+# Web UI
+react==18.2.0
+vite==5.0.8
+typescript==5.3.3
+
+# Development tools
+pytest==7.4.3
+black==23.11.0
+flake8==6.1.0

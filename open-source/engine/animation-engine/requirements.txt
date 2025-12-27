@@ -1,0 +1,34 @@
+# Animation Engine Dependencies
+# Core animation and rendering
+manim>=0.18.1
+numpy>=1.24.0
+pillow>=10.0.0
+
+# Data structures and validation
+pydantic>=2.0.0
+python-dateutil>=2.8.0
+
+# Async and concurrent processing
+asyncio-mqtt>=0.13.0
+concurrent-futures>=3.1.1
+
+# Configuration and logging
+python-dotenv>=1.0.0
+structlog>=23.0.0
+
+# Optional dependencies for enhanced features
+# For 3D rendering (optional)
+# trimesh>=4.0.0
+# meshio>=5.3.0
+
+# For video processing (optional)
+# opencv-python>=4.8.0
+# imageio>=2.31.0
+
+# For mathematical computations (optional)
+# sympy>=1.12.0
+# matplotlib>=3.7.0
+
+# For cloud storage integration (optional)
+# boto3>=1.28.0  # AWS S3
+# google-cloud-storage>=2.10.0  # Google Cloud Storage
